@@ -413,7 +413,7 @@ const Hero = ({ setIsOpen }) => {
             Price Starts
           </span>
           <span className="hero-price-amt" style={{ fontSize: 'clamp(18px, 2vw, 24px)', lineHeight: '1', verticalAlign: 'baseline' }}>
-            ₹ 65 Lakhs*
+            ₹ 64 Lakhs*
           </span>
         </p>
 
@@ -430,9 +430,9 @@ const Hero = ({ setIsOpen }) => {
           <button
             onClick={() => setIsOpen(true)}
             className="btn-gold-outline hero-btn-one hero-btn-pill"
-            style={{ fontSize: '14px', padding: '11px 22px', fontWeight: '700', textTransform: 'none', cursor: 'pointer', display: 'inline-block' }}
+            style={{ fontSize: '14px', padding: '11px 24px', fontWeight: '700', textTransform: 'none', cursor: 'pointer', display: 'inline-block' }}
           >
-            Book @ ₹5L EOI
+            Download Brochure
           </button>
 
           <button
