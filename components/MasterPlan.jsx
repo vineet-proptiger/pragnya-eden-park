@@ -7,11 +7,11 @@ const plans = [
     label: '2 BHK Residence', 
     img: masterplanImages.bhk2,
     details: {
-        carpet: '790 Sq. Ft. (73.39 Sq. Mtr.)',
-        apartment: '960 Sq. Ft. (89.18 Sq. Mtr.)',
-        super: '1,100.00 Sq. Ft. (102.19 Sq. Mtr.)'
+        size: '1100 Sq.Ft',
+        carpet: '749 Sq.Ft'
     }
   },
+  /*
   { 
     label: '3 BHK Type 1 (Comfort)', 
     img: masterplanImages.bhk3,
@@ -21,13 +21,13 @@ const plans = [
         super: '1,450.00 Sq. Ft. (134.70 Sq. Mtr.)'
     }
   },
+  */
   { 
-    label: '3 BHK Type 2 (Premium)', 
+    label: '3 BHK Residence', 
     img: masterplanImages.bhk45,
     details: {
-        carpet: '1,210 Sq. Ft. (112.41 Sq. Mtr.)',
-        apartment: '1,465 Sq. Ft. (136.10 Sq. Mtr.)',
-        super: '1,685.00 Sq. Ft. (156.54 Sq. Mtr.)'
+        size: '2210 Sq.Ft',
+        carpet: '1547 Sq.Ft'
     }
   },
 ]
@@ -67,15 +67,24 @@ const MasterPlan = ({ setIsOpen }) => {
         {/* Tab Content */}
         <div className="max-w-[1100px] mx-auto">
           {activeTab === 'master' && (
-            <div className="w-full max-w-[800px] mx-auto bg-[#fdfbf7] p-4 shadow-sm" data-aos="zoom-in" data-aos-duration="1000">
-              <a onClick={() => setIsOpen && setIsOpen(true)} className="cursor-pointer block relative">
-                <img src={masterplanImages.masterPlan} alt="Master Plan" className="w-full h-auto mx-auto" />
+            <div className="w-full max-w-[820px] mx-auto bg-white rounded-md overflow-hidden shadow-[0_5px_15px_rgba(0,0,0,0.1)] p-4" data-aos="zoom-in" data-aos-duration="1000">
+              <a onClick={() => setIsOpen && setIsOpen(true)} className="cursor-pointer block relative overflow-hidden group bg-[#fdfbf7]">
+                <img 
+                  src={masterplanImages.masterPlan} 
+                  alt="Master Plan" 
+                  className="w-full h-auto mx-auto filter blur-[6px] group-hover:blur-[3px] transition-all duration-300" 
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-white/20">
+                  <span className="bg-[#000242] text-white px-7 py-4 text-[14px] sm:text-[15px] leading-snug font-semibold uppercase tracking-wider text-center shadow-md">
+                    Download<br/>Master Plan
+                  </span>
+                </div>
               </a>
             </div>
           )}
 
           {activeTab === 'floor' && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[820px] mx-auto">
               {plans.map((plan, idx) => (
                 <div key={idx} className="bg-white rounded-md overflow-hidden shadow-[0_5px_15px_rgba(0,0,0,0.1)] transition-transform hover:-translate-y-1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={idx * 100}>
                   <a onClick={() => setIsOpen && setIsOpen(true)} className="cursor-pointer block relative h-[260px] overflow-hidden group bg-[#fdfbf7] flex items-center justify-center p-4">
@@ -92,9 +101,8 @@ const MasterPlan = ({ setIsOpen }) => {
                   </a>
                   <div className="p-6 text-center border-t border-gray-100 bg-white">
                     <h4 className="text-[22px] text-[#000242] font-semibold mb-4">{plan.label}</h4>
-                    <p className="text-[14px] text-gray-600 mb-2"><span className="font-semibold text-gray-800">Carpet Area </span>: {plan.details.carpet}</p>
-                    <p className="text-[14px] text-gray-600 mb-2"><span className="font-semibold text-gray-800">Apartment Area </span>: {plan.details.apartment}</p>
-                    <p className="text-[14px] text-gray-600"><span className="font-semibold text-gray-800">Super Built-Up Area </span>: {plan.details.super}</p>
+                    <p className="text-[15px] text-gray-600 mb-2.5"><span className="font-semibold text-gray-800">Size </span>: {plan.details.size}</p>
+                    <p className="text-[15px] text-gray-600"><span className="font-semibold text-gray-800">Carpet Area </span>: {plan.details.carpet}</p>
                   </div>
                 </div>
               ))}

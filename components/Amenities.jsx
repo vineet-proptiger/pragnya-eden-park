@@ -3,17 +3,12 @@ import React, { useEffect, useRef, useState } from 'react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import { galleryImages } from '../lib/images'
 
-const amenitiesList = [
-  { img: 'https://theoryza.co.in/img/amenities/balcony.jpg?ver17', title: 'Balcony' },
-  { img: 'https://theoryza.co.in/img/amenities/fine_dining.jpg?ver17', title: 'Fine Dining' },
-  { img: 'https://theoryza.co.in/img/amenities/indoor_pool.jpg?ver17', title: 'Temperature-controlled indoor pool' },
-  { img: 'https://theoryza.co.in/img/amenities/club_lobby.jpg?ver17', title: 'Club Lobby' },
-  { img: 'https://theoryza.co.in/img/amenities/kids_play_area.jpg?ver17', title: "Kid's Play Area" },
-  { img: 'https://theoryza.co.in/img/amenities/meditation_garden.jpg?ver17', title: 'Meditation Garden' },
-  { img: 'https://theoryza.co.in/img/amenities/gym.jpg?ver17', title: 'Gym' },
-  { img: 'https://theoryza.co.in/img/amenities/sky_lounge.jpg?ver17', title: 'Sky Lounge' },
-]
+const amenitiesList = galleryImages.map(item => ({
+  img: item.src,
+  title: item.title
+}))
 
 const Amenities = () => {
   const headingRef = useRef(null)

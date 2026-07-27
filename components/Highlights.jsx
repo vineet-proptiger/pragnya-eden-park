@@ -113,79 +113,93 @@ const Highlights = () => {
           <div style={{ position: 'absolute', top: -1, left: -1, width: '24px', height: '24px', borderTop: '1.5px solid #d3be8a', borderLeft: '1.5px solid #d3be8a', borderTopLeftRadius: '20px' }}></div>
           <div style={{ position: 'absolute', top: -1, right: -1, width: '24px', height: '24px', borderTop: '1.5px solid #d3be8a', borderRight: '1.5px solid #d3be8a', borderTopRightRadius: '20px' }}></div>
           <div style={{ position: 'absolute', bottom: -1, left: -1, width: '24px', height: '24px', borderBottom: '1.5px solid #d3be8a', borderLeft: '1.5px solid #d3be8a', borderBottomLeftRadius: '20px' }}></div>
-          <div style={{ position: 'absolute', bottom: -1, right: -1, width: '24px', height: '24px', borderBottom: '1.5px solid #d3be8a', borderRight: '1.5px solid #d3be8a', borderBottomRightRadius: '20px' }}></div>
-
-          {/* Item 1 */}
+          <div style={{ position: 'absolute', bottom: -1, right: -1, width: '24px', height: '24px', borderBottom: '1.5px solid #d3be8a', borderRight: '1.5px solid #d3be8a', borderBottomRightRadius: '20px' }}></div>          {/* Item 1 */}
           <div className="p-10 border-b lg:border-b border-white/20 lg:border-r flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6" style={{ background: '#d3be8a' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 22v-6"></path>
+                <path d="M17 8C17 4.5 14.5 2 12 2S7 4.5 7 8c-2.5 0-4.5 2-4.5 4.5 0 2 1.5 3.5 3.5 3.5h12c2 0 3.5-1.5 3.5-3.5C21.5 10 19.5 8 17 8z"></path>
               </svg>
             </div>
-            <h3 className="text-[#d3be8a] font-bold text-[15px] uppercase tracking-wider mb-3">INTEGRATED GREEN TOWNSHIP</h3>
-            <p className="text-white/80 text-[14px] leading-relaxed">Spread Over 92 Acres in the Heart of OMR</p>
+            <h3 className="text-[#d3be8a] font-bold text-[15px] uppercase tracking-wider mb-3">92-ACRE TOWNSHIP</h3>
+            <p className="text-white/80 text-[14px] leading-relaxed">92 Acres Of Lush Greenery With Over 14,732 Plant Varieties</p>
           </div>
 
           {/* Item 2 */}
           <div className="p-10 border-b lg:border-b border-white/20 lg:border-r flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6" style={{ background: '#d3be8a' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
                 <line x1="9" y1="22" x2="15" y2="22"></line>
+                <line x1="8" y1="6" x2="8" y2="6"></line>
+                <line x1="16" y1="6" x2="16" y2="6"></line>
+                <line x1="12" y1="6" x2="12" y2="6"></line>
+                <line x1="8" y1="10" x2="8" y2="10"></line>
+                <line x1="16" y1="10" x2="16" y2="10"></line>
+                <line x1="12" y1="10" x2="12" y2="10"></line>
+                <line x1="8" y1="14" x2="8" y2="14"></line>
+                <line x1="16" y1="14" x2="16" y2="14"></line>
+                <line x1="12" y1="14" x2="12" y2="14"></line>
                 <line x1="12" y1="18" x2="12" y2="22"></line>
               </svg>
             </div>
-            <h3 className="text-[#d3be8a] font-bold text-[15px] uppercase tracking-wider mb-3">ON-CAMPUS PSBB SCHOOL</h3>
-            <p className="text-white/80 text-[14px] leading-relaxed">Home to the Prestigious PSBB School Inside Township</p>
+            <h3 className="text-[#d3be8a] font-bold text-[15px] uppercase tracking-wider mb-3">PREMIUM 2 &amp; 3 BHK</h3>
+            <p className="text-white/80 text-[14px] leading-relaxed">Luxury 2 &amp; 3 BHK Homes Built On 2 Stilt + 18 Floor Towers</p>
           </div>
 
           {/* Item 3 */}
           <div className="p-10 border-b lg:border-b border-white/20 flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6" style={{ background: '#d3be8a' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 3v18"></path>
-                <path d="M12 3l4 4"></path>
-                <path d="M12 3L8 7"></path>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                <path d="M4 22h16"></path>
+                <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
               </svg>
             </div>
-            <h3 className="text-[#d3be8a] font-bold text-[15px] uppercase tracking-wider mb-3">EXCLUSIVE SPORTS FACILITY</h3>
-            <p className="text-white/80 text-[14px] leading-relaxed">First-of-its-Kind with Gym, Skating, Futsal &amp; Cricket</p>
+            <h3 className="text-[#d3be8a] font-bold text-[15px] uppercase tracking-wider mb-3">NEXT-GEN SPORTS HUB</h3>
+            <p className="text-white/80 text-[14px] leading-relaxed">Home To India&rsquo;s First Future-Ready Sports Experience</p>
           </div>
 
           {/* Item 4 */}
           <div className="p-10 border-b md:border-b-0 lg:border-r border-white/20 flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6" style={{ background: '#d3be8a' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <path d="M8 11l4-3 4 3v4h-8v-4z"></path>
               </svg>
             </div>
-            <h3 className="text-[#d3be8a] font-bold text-[15px] uppercase tracking-wider mb-3">POLLUTION-FREE LIVING</h3>
-            <p className="text-white/80 text-[14px] leading-relaxed">Replete with Potable Water &amp; Lush Manicured Parks</p>
+            <h3 className="text-[#d3be8a] font-bold text-[15px] uppercase tracking-wider mb-3">8 HOMES PER FLOOR</h3>
+            <p className="text-white/80 text-[14px] leading-relaxed">Low-Density Living With Enhanced Privacy &amp; Comfort</p>
           </div>
 
           {/* Item 5 */}
           <div className="p-10 border-b md:border-b-0 lg:border-r border-white/20 flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6" style={{ background: '#d3be8a' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
               </svg>
             </div>
-            <h3 className="text-[#d3be8a] font-bold text-[15px] uppercase tracking-wider mb-3">PRIME OMR CONNECTIVITY</h3>
-            <p className="text-white/80 text-[14px] leading-relaxed">Minutes from SIPCOT IT Park &amp; ECR IT Corridor</p>
+            <h3 className="text-[#d3be8a] font-bold text-[15px] uppercase tracking-wider mb-3">PSBB &amp; SIPCOT HUB</h3>
+            <p className="text-white/80 text-[14px] leading-relaxed">PSBB School, IT Hub &amp; Metro Just Minutes Away</p>
           </div>
 
           {/* Item 6 */}
           <div className="p-10 flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6" style={{ background: '#d3be8a' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                <line x1="8" y1="21" x2="16" y2="21"></line>
-                <line x1="12" y1="17" x2="12" y2="21"></line>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+                <path d="M12 14v4"></path>
+                <path d="M10 16h4"></path>
               </svg>
             </div>
-            <h3 className="text-[#d3be8a] font-bold text-[15px] uppercase tracking-wider mb-3">EVERYDAY CONVENIENCES</h3>
-            <p className="text-white/80 text-[14px] leading-relaxed">On-site Supermarket, Salon, Creche &amp; Apollo Health Clinic</p>
+            <h3 className="text-[#d3be8a] font-bold text-[15px] uppercase tracking-wider mb-3">WELLNESS &amp; RETAIL</h3>
+            <p className="text-white/80 text-[14px] leading-relaxed">Everyday Convenience With Apollo Clinic &amp; Retail Services</p>
           </div>
 
         </div>

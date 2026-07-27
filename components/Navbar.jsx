@@ -58,7 +58,7 @@ const Navbar = ({ setIsOpen }) => {
         }
 
         .header_style2.sticky .header_navigation2 {
-          width: 200px;
+          width: 250px;
           border-radius: 5px;
           background-color: transparent;
           box-shadow: none;
@@ -136,7 +136,7 @@ const Navbar = ({ setIsOpen }) => {
         }
 
         .nav-logo {
-          height: 46px;
+          height: 58px;
           width: auto;
           display: block;
           object-fit: contain;
@@ -144,7 +144,7 @@ const Navbar = ({ setIsOpen }) => {
         }
 
         .header_style2.sticky .nav-logo {
-          transform: scale(0.9);
+          transform: scale(1.05);
         }
 
         .mob_nav_trigger {
@@ -188,7 +188,7 @@ const Navbar = ({ setIsOpen }) => {
           }
           
           .nav-logo {
-            height: 32px;
+            height: 42px;
           }
           
           .mob_nav_trigger {

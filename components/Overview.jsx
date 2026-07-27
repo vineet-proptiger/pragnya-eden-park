@@ -1,10 +1,9 @@
 'use client'
-import React, { useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import { overviewImage } from '../lib/images'
 
 const Overview = ({ setIsOpen }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
   <section
@@ -144,10 +143,8 @@ const Overview = ({ setIsOpen }) => {
           <div className="inner-section" data-aos="fade-up" data-aos-duration="1000">
             <h2 className="heading" data-aos="fade-up" data-aos-duration="1000" style={{ marginBottom: '25px' }}>Overview</h2>
             
-            <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100" style={{ fontSize: '18px', color: '#333', textAlign: 'justify', marginBottom: '20px' }}>
-              Pragnya Eden Park Siruseri, is an integrated township located in the heart of OMR. Spread over 92 acres, this green-haven is both pollution-free and replete with potable water.
-              {!isExpanded && <span style={{ color: '#000242', fontWeight: 600, cursor: 'pointer', marginLeft: '5px' }} onClick={() => setIsExpanded(true)}>... Read more</span>}
-              {isExpanded && <span> Home to the prestigious PSBB School, Pragnya Eden Park also boasts of a first-of-its-kind sports facility with - gym, skating, futsal, cricket and more. Other highlights include - a well stocked supermarket, salon, creche and Apollo Health Clinic. <span style={{ color: '#000242', fontWeight: 600, cursor: 'pointer' }} onClick={() => setIsExpanded(false)}>Read less</span></span>}
+            <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100" style={{ fontSize: '18px', color: '#333', textAlign: 'justify', marginBottom: '20px', lineHeight: '1.8' }}>
+              Pragnya Eden Park, Siruseri is a 92-acre integrated township in the heart of OMR, offering lush green landscapes, rich foliage and a pollution-free environment. Home to the prestigious PSBB School, it features India&apos;s first next-generation sports hub with cricket, futsal, skating, gym and more. Enjoy everyday convenience with an in-house supermarket, salon, cr&egrave;che and Apollo Health Clinic, all strategically located beside SIPCOT IT Park with seamless metro connectivity.
             </p>
             
             <p className="boldp" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="150" style={{ fontSize: '18px', fontWeight: '700', color: '#333', marginBottom: '40px' }}>

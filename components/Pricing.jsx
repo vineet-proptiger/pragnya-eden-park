@@ -8,7 +8,7 @@ const units = [
   {
     type: "2 BHK",
     subtitle: "RESIDENCES",
-    size: "1100 Sq.Ft.",
+    size: "1110 Sq.Ft.",
     price: "₹ 65 Lakhs*",
     btnText: "GET DETAILS",
     features: [
@@ -18,6 +18,7 @@ const units = [
     ],
     isPopular: false,
   },
+  /*
   {
     type: "3 BHK Type 1",
     subtitle: "RESIDENCES",
@@ -31,10 +32,11 @@ const units = [
     ],
     isPopular: true,
   },
+  */
   {
-    type: "3 BHK Type 2",
+    type: "3 BHK",
     subtitle: "RESIDENCES",
-    size: "1685 Sq.Ft.",
+    size: "2210 Sq.Ft.",
     price: "Ask For Price",
     btnText: "GET DETAILS",
     features: [
@@ -87,13 +89,12 @@ const Pricing = ({ setIsOpen }) => {
         </div>
 
         {/* Pricing Cards */}
-        <div className="relative grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-4 lg:gap-8 max-w-[1000px] mx-auto">
+        <div className="relative grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:gap-20 max-w-[760px] mx-auto justify-items-center">
           
           {/* Connecting Line (Desktop only) */}
-          <div className="hidden md:block absolute top-[110px] left-[16%] right-[16%] h-[1px] bg-[#d5e0dd] -z-10"></div>
-          {/* Dots on the line */}
-          <div className="hidden md:block absolute top-[106px] left-[32.7%] w-2.5 h-2.5 rounded-full border-[1.5px] border-[#125b4c] bg-white -z-10"></div>
-          <div className="hidden md:block absolute top-[106px] left-[66.3%] w-2.5 h-2.5 rounded-full border-[1.5px] border-[#125b4c] bg-white -z-10"></div>
+          <div className="hidden md:block absolute top-[110px] left-[25%] right-[25%] h-[1px] bg-[#d5e0dd] -z-10"></div>
+          {/* Dot on the line between the 2 cards */}
+          <div className="hidden md:block absolute top-[106px] left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full border-[1.5px] border-[#125b4c] bg-white -z-10"></div>
 
           {units.map((unit, idx) => (
             <div

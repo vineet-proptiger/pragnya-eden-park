@@ -187,7 +187,7 @@ const Hero = ({ setIsOpen }) => {
         /* ─── Desktop ─── */
         @media (min-width: 1024px) {
           .hero-container {
-            aspect-ratio: 21/9;
+            aspect-ratio: 16/10;
           }
           .slide-layer {
             position: absolute;
@@ -226,7 +226,7 @@ const Hero = ({ setIsOpen }) => {
           /* ─── Tablet ─── */
           @media (min-width: 768px) and (max-width: 1023px) {
             .hero-container {
-              aspect-ratio: 16/7;
+              aspect-ratio: 16/10;
             }
             .slide-layer {
               position: absolute;
@@ -244,8 +244,7 @@ const Hero = ({ setIsOpen }) => {
 
           /* ─── Mobile ─── */
           @media (max-width: 767px) {
-            .desktop-carousel { display: none !important; }
-            .mobile-hero-image { display: block !important; width: 100%; height: auto; }
+            .desktop-carousel { display: block !important; width: 100%; height: auto; }
 
             .hero-container {
               display: flex;
@@ -359,6 +358,11 @@ const Hero = ({ setIsOpen }) => {
           loop
           muted
           playsInline
+          preload="auto"
+          onEnded={(e) => {
+            e.currentTarget.currentTime = 0;
+            e.currentTarget.play();
+          }}
           poster={heroImages.banner}
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         >
@@ -366,29 +370,11 @@ const Hero = ({ setIsOpen }) => {
         </video>
       </div>
 
-      {/* ── Mobile Static Image ── */}
-      <div className="mobile-hero-image">
-        <Image
-          src={heroImages.smDevice}
-          alt="Banner Mobile"
-          width={768}
-          height={800}
-          className="hero-image"
-          priority
-          sizes="100vw"
-        />
-      </div>
-
       {/* ── Dark overlay for text legibility ── */}
       <div className="hero-overlay" />
 
       {/* ── Content overlay ── */}
       <div className="hero-content">
-
-        {/* Status Badge */}
-        <div style={{ display: 'inline-block', padding: '4px 14px', backgroundColor: 'rgba(211, 190, 138, 0.2)', border: '1px solid #d3be8a', borderRadius: '4px', marginBottom: '10px' }}>
-          <span style={{ fontFamily: 'var(--font-jost), Montserrat, sans-serif', fontSize: '12px', fontWeight: 700, color: '#d3be8a', textTransform: 'uppercase', letterSpacing: '2px' }}>Under Construction</span>
-        </div>
 
         {/* Main Heading */}
         <h1 className="hero-title">
@@ -403,11 +389,11 @@ const Hero = ({ setIsOpen }) => {
         {/* Bullet Points */}
         <div className="hero-bullets" style={{ marginBottom: '24px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
           {[
-            '92 Acre Integrated Green Township in OMR',
-            'Home to Prestigious PSBB School on Campus',
-            'First-of-its-Kind Sports Facility & Supermarket',
-            'Pollution-Free & Replete With Potable Water',
-            'Minutes from SIPCOT IT Park & ECR IT Corridor'
+            '92-Acres Integrated Township Project',
+            '2 & 3 BHK In Premium 18-Floor Towers',
+            'India\'s First Future-Ready Sports Hub',
+            'Experience 8 Homes Per Floor Exclusivity',
+            'PSBB School, SIPCOT & Metro Access'
           ].map((text, i) => (
           <div key={i} className="hero-bullet-item" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand, #C9A96E)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, backgroundColor: '#fff', borderRadius: '50%', padding: '2px' }}>

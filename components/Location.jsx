@@ -5,7 +5,7 @@ import {
   GraduationCap,
   MapPinned,
   ShoppingBag,
-  Stethoscope,
+  BookOpen,
 } from 'lucide-react'
 
 const F_JOST = 'var(--font-jost), Montserrat, sans-serif'
@@ -16,51 +16,79 @@ const locationCategories = [
     category: 'CONNECTIVITY',
     icon: MapPinned,
     items: [
-      { name: 'OMR IT Corridor & Highway', dist: '2 Mins*' },
-      { name: 'Upcoming OMR Metro Station', dist: '5 Mins*' },
-      { name: 'Kelambakkam Junction', dist: '10 Mins*' },
-      { name: 'ECR & Beach Link Road', dist: '15 Mins*' },
-      { name: 'Chennai International Airport', dist: '35 Mins*' },
-      { name: 'Velachery Business Center', dist: '30 Mins*' },
+      { name: 'MTC Bus Stop', dist: 'Walkable' },
+      { name: 'Metro Phase I', dist: '1 Km' },
     ],
   },
   {
-    category: 'EDUCATION HUB',
+    category: 'SCHOOLS',
+    icon: BookOpen,
+    items: [
+      { name: 'PSBB School within Township', dist: 'On Campus' },
+      { name: "St. John's Public School", dist: '4 Km' },
+      { name: 'Vels Vidyashram', dist: '4 Km' },
+      { name: 'Mount Litera Zee School', dist: '5 Km' },
+      { name: 'The School - KFI', dist: '5 Km' },
+      { name: 'KC High International School', dist: '5 Km' },
+      { name: 'Velammal New Gen', dist: '5 Km' },
+      { name: 'Gateway International School', dist: '6 Km' },
+      { name: 'Chettinad Sarvalokaa Education International School', dist: '6 Km' },
+      { name: 'Amethyst International School', dist: '7 Km' },
+      { name: "Shraddha Children's Academy", dist: '7 Km' },
+      { name: 'Hindustan International School', dist: '7 Km' },
+      { name: 'Vijay Vidhyashram', dist: '7 Km' },
+    ],
+  },
+  {
+    category: 'COLLEGES',
     icon: GraduationCap,
     items: [
-      { name: 'PSBB School (Within Township Campus)', dist: '0 Mins*' },
-      { name: 'Hindustan University', dist: '10 Mins*' },
-      { name: 'VIT Chennai Campus', dist: '15 Mins*' },
-      { name: 'Chettinad Medical College & Hospital', dist: '10 Mins*' },
+      { name: 'Dr. Ambedkar Govt Law College', dist: '1 Km' },
+      { name: 'Chennai Mathematical Institute (CMI)', dist: '2 Km' },
+      { name: 'Mohamed Sathak A.J. College of Engineering', dist: '3 Km' },
+      { name: 'Hindustan Institute of Technology & Science', dist: '5 Km' },
+      { name: 'Chettinad Medical College', dist: '6 Km' },
+      { name: 'Jeppiaar College of Arts & Science', dist: '7 Km' },
+      { name: 'Sathyabama University', dist: '8 Km' },
+      { name: 'St. Joseph College', dist: '8 Km' },
+      { name: 'VIT Chennai', dist: '10 Km' },
+      { name: 'SSN College of Engineering', dist: '10 Km' },
     ],
   },
   {
-    category: 'HEALTHCARE',
-    icon: Stethoscope,
-    items: [
-      { name: 'Apollo Health Clinic (On Campus)', dist: '0 Mins*' },
-      { name: 'Chettinad Health City', dist: '10 Mins*' },
-      { name: 'Gleneagles Global Health City', dist: '20 Mins*' },
-      { name: 'Dr. Mehta\'s Hospitals', dist: '15 Mins*' },
-    ],
-  },
-  {
-    category: 'MALLS/ SHOPPING',
+    category: 'ENTERTAINMENT',
     icon: ShoppingBag,
     items: [
-      { name: 'Township Supermarket & Salon', dist: '0 Mins*' },
-      { name: 'The Marina Mall (OMR)', dist: '10 Mins*' },
-      { name: 'Vivara Mall & Entertainment', dist: '12 Mins*' },
-      { name: 'ECR Entertainment & Resort Hubs', dist: '15 Mins*' },
+      { name: 'Novotel', dist: '3.5 Km' },
+      { name: 'INOX Cinemas', dist: '4 Km' },
+      { name: 'The Marina Mall', dist: '4 Km' },
+      { name: 'OMR Food Street', dist: '5 Km' },
+      { name: 'AGS Cinemas', dist: '5 Km' },
+      { name: 'Vivira Mall', dist: '5 Km' },
+      { name: 'Four Points', dist: '8 Km' },
     ],
   },
   {
-    category: 'TECH PARKS',
+    category: 'TOP IT HUBS',
     icon: Building2,
     items: [
-      { name: 'SIPCOT IT Park (Adjacent)', dist: '2 Mins*' },
-      { name: 'TCS & Cognizant Siruseri Campuses', dist: '5 Mins*' },
-      { name: 'Infosys Sholinganallur', dist: '15 Mins*' },
+      { name: 'Airtel Data Center', dist: '1 Km' },
+      { name: 'Atos Syntel', dist: '2 Km' },
+      { name: 'Hexaware Technologies', dist: '2 Km' },
+      { name: 'Capgemini', dist: '2 Km' },
+      { name: 'TCS', dist: '2 Km' },
+      { name: 'Cognizant Technology Solutions', dist: '2 Km' },
+      { name: 'AdaniConneX Data Center', dist: '3 Km' },
+      { name: 'Aspire Systems', dist: '3 Km' },
+      { name: 'Sify', dist: '3 Km' },
+      { name: 'Intellect', dist: '3 Km' },
+      { name: 'FSS', dist: '3 Km' },
+      { name: 'Pacifica Tech Park', dist: '4 Km' },
+      { name: 'Valeo', dist: '4 Km' },
+      { name: 'FLSmidth', dist: '4 Km' },
+      { name: 'ETA Technopark', dist: '5 Km' },
+      { name: 'HCL', dist: '6 Km' },
+      { name: 'Infosys', dist: '9 Km' },
     ],
   },
 ]
@@ -207,7 +235,7 @@ const Location = () => {
               background: '#EAE5DC'
             }}>
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.3496035971485!2d80.2178333!3d12.8354722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525a74378f4a13%3A0x6b80302fffaeeec8!2sEden%20Park%20Township%2C%20Siruseri!5e0!3m2!1sen!2sin!4v1783426467900!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.2776245672117!2d80.20615800000002!3d12.8253282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525a1463efdf73%3A0xa7a8f060e3cf1a6c!2sEden%20Park!5e0!3m2!1sen!2sin!4v1785139902158!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: '420px', display: 'block', pointerEvents: 'none' }}
