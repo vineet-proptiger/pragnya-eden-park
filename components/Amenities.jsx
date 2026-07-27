@@ -16,11 +16,10 @@ const Amenities = () => {
   const headingRef = useRef(null)
   const sliderRef = useRef(null)
   const [selectedAmenity, setSelectedAmenity] = useState(null)
-  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
-    // Prevent React-Slick blank rendering on initial load across devices by triggering layout refresh
+    // Recalculate after hydration and after the browser has established the viewport width.
+    // This is important for mobile Safari, where Slick can initialise before its track has a width.
     const t1 = setTimeout(() => {
       if (sliderRef.current) sliderRef.current.slickGoTo(0, true);
       window.dispatchEvent(new Event('resize'));
@@ -88,7 +87,9 @@ const Amenities = () => {
   const settings = {
     dots: false,
     infinite: true,
-    adaptiveHeight: true,
+    // Every card has a fixed aspect ratio. Letting Slick measure image height during
+    // loading can collapse the track on smaller devices.
+    adaptiveHeight: false,
     autoplay: true,
     autoplaySpeed: 2500,
     speed: 900,
@@ -136,7 +137,7 @@ const Amenities = () => {
       {
         breakpoint: 420,
         settings: {
-          centerMode: true,
+          centerMode: false,
           centerPadding: '0px',
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -435,42 +436,15 @@ const Amenities = () => {
 
         @media (max-width: 420px) {
           .amenities-slider .slick-list {
-            min-height: 200px !important;
-            overflow: visible;
-          }
-
-          .amenities-slider .slick-track {
-            display: flex !important;
-            align-items: center;
-          }
-
-          .amenities-slider .slick-slide {
-            display: flex !important;
-            align-items: center;
-            justify-content: center;
-          }
-
-          .amenities-slider .slick-slide > div {
-            width: 100% !important;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding-top: 8px !important;
+            padding-bottom: 8px !important;
           }
 
           .amenities-box {
             aspect-ratio: 16/9;
-            height: auto;
-            width: 100% !important;
-            transform: scale(0.96);
-            max-width: 100%;
-            margin: 0 auto;
-            opacity: 1;
-          }
-
-          .amenities-slider .slick-center .amenities-box {
+            width: 100%;
             transform: scale(1);
             opacity: 1;
-            box-shadow: 0 10px 32px rgba(0,0,0,0.2);
           }
 
           .amenities-box img {
