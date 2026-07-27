@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { heroImages } from '../lib/images'
 
 const slides = [
-  { img: heroImages.banner },
+  { img: heroImages.placeholder },
   { img: heroImages.banner2 }
 ]
 
@@ -26,7 +26,7 @@ const Hero = ({ setIsOpen }) => {
           margin-top: 0px;
           height: auto;
           overflow: hidden;
-          background-image: url('/images/highlights/highlight.webp');
+          background-image: url('/images/hero/placehoder.webp');
           background-size: cover;
           background-position: center;
           display: block;
@@ -363,7 +363,7 @@ const Hero = ({ setIsOpen }) => {
             e.currentTarget.currentTime = 0;
             e.currentTarget.play();
           }}
-          poster={heroImages.banner}
+          poster={heroImages.placeholder}
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         >
           <source src="/images/hero/video.mp4" type="video/mp4" />

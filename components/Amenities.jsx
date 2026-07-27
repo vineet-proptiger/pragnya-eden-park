@@ -132,12 +132,11 @@ const Amenities = () => {
           centerPadding: '18px',
           autoplaySpeed: 2000,
         }
-      }
-      ,
+      },
       {
         breakpoint: 420,
         settings: {
-          centerMode: false,
+          centerMode: true,
           centerPadding: '0px',
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -422,11 +421,33 @@ const Amenities = () => {
           .amenities-slider .slick-next:before {
             font-size: 25px;
           }
+
+          .amenities-box {
+            transform: scale(0.88);
+          }
+
+          .amenities-slider .slick-center .amenities-box,
+          .amenities-slider .slick-active .amenities-box {
+            transform: scale(1);
+            opacity: 1;
+          }
         }
 
         @media (max-width: 420px) {
           .amenities-slider .slick-list {
-            min-height: 220px !important;
+            min-height: 200px !important;
+            overflow: visible;
+          }
+
+          .amenities-slider .slick-track {
+            display: flex !important;
+            align-items: center;
+          }
+
+          .amenities-slider .slick-slide {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
           }
 
           .amenities-slider .slick-slide > div {
@@ -437,16 +458,32 @@ const Amenities = () => {
           }
 
           .amenities-box {
-            aspect-ratio: auto;
-            height: calc(56.25vw); /* 16:9 fallback height */
-            transform: scale(0.95);
-            max-width: 92%;
+            aspect-ratio: 16/9;
+            height: auto;
+            width: 100% !important;
+            transform: scale(0.96);
+            max-width: 100%;
             margin: 0 auto;
+            opacity: 1;
+          }
+
+          .amenities-slider .slick-center .amenities-box {
+            transform: scale(1);
+            opacity: 1;
+            box-shadow: 0 10px 32px rgba(0,0,0,0.2);
           }
 
           .amenities-box img {
+            width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
+          }
+
+          .amenity_caption {
+            font-size: 16px;
+            padding: 8px 10px;
+            right: 10px;
           }
         }
       `}</style>

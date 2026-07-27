@@ -5,10 +5,29 @@ import { logoImages } from '../lib/images'
 
 const Navbar = ({ setIsOpen }) => {
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [navState, setNavState] = useState('top') // 'top', 'collapsed', 'expanded'
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10)
+    let lastScrollY = window.scrollY
+
+    const onScroll = () => {
+      const currentScrollY = window.scrollY
+
+      if (currentScrollY <= 40) {
+        setNavState('top')
+      } else {
+        if (currentScrollY > lastScrollY + 2) {
+          // Scrolling down -> collapse to hanging logo tab
+          setNavState('collapsed')
+        } else if (lastScrollY > currentScrollY + 2) {
+          // Scrolling up -> bring back the full 1st navbar with links
+          setNavState('expanded')
+        }
+      }
+
+      lastScrollY = currentScrollY
+    }
+
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -67,7 +86,7 @@ const Navbar = ({ setIsOpen }) => {
         }
 
         .header_style2 .header_navigation2 li {
-          flex-basis: 12.5%;
+          flex-basis: 14%;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -147,21 +166,52 @@ const Navbar = ({ setIsOpen }) => {
           transform: scale(1.05);
         }
 
+        /* Reappear Full Navbar on Scroll Up (Smart Sticky Navbar) */
+        .header_style2.scrolled-up-expanded {
+          top: 15px;
+          background: transparent !important;
+          box-shadow: none !important;
+        }
+
+        .header_style2.scrolled-up-expanded .header_navigation2 {
+          width: 100% !important;
+          height: 80px !important;
+          transition: all 0.4s ease;
+        }
+
+        .header_style2.scrolled-up-expanded .header_navigation2 li {
+          animation: 0.5s cubic-bezier(0.25, 1, 0.5, 1) 0s 1 normal forwards running Navbar_scale-in !important;
+          opacity: 1;
+        }
+
+        .header_style2.scrolled-up-expanded .header_navigation2 li.navbar-logo {
+          animation: none !important;
+          opacity: 1;
+          flex-basis: auto;
+          background-color: #fff;
+          padding: 6px 16px;
+          border-radius: 8px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+          margin: 0;
+          transition: all 0.4s ease;
+        }
+
+        .header_style2.scrolled-up-expanded .nav-logo {
+          height: 48px;
+        }
+
         .mob_nav_trigger {
           display: none;
         }
 
         @media (max-width: 991px) {
-          .header_style2 {
-            top: 0;
-            padding: 12px 0;
-            background: #fff;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-          }
-          .header_style2.sticky {
-            background: #fff;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            padding: 12px 0;
+          .header_style2,
+          .header_style2.sticky,
+          .header_style2.scrolled-up-expanded {
+            top: 0 !important;
+            padding: 12px 0 !important;
+            background: #fff !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
           }
           
           .header_style2 .header_navigation2 li.nav-item {
@@ -169,9 +219,10 @@ const Navbar = ({ setIsOpen }) => {
           }
           
           .header_style2 .header_navigation2,
-          .header_style2.sticky .header_navigation2 {
+          .header_style2.sticky .header_navigation2,
+          .header_style2.scrolled-up-expanded .header_navigation2 {
             width: 100% !important;
-            height: auto;
+            height: auto !important;
             background: transparent !important;
             box-shadow: none !important;
             border-radius: 0;
@@ -179,8 +230,9 @@ const Navbar = ({ setIsOpen }) => {
           }
           
           .header_style2 .header_navigation2 li.navbar-logo,
-          .header_style2.sticky .header_navigation2 li.navbar-logo {
-            padding: 0;
+          .header_style2.sticky .header_navigation2 li.navbar-logo,
+          .header_style2.scrolled-up-expanded .header_navigation2 li.navbar-logo {
+            padding: 0 !important;
             background: transparent !important;
             box-shadow: none !important;
             margin: 0 !important;
@@ -285,20 +337,19 @@ const Navbar = ({ setIsOpen }) => {
 
         @keyframes Navbar_scale-in {
           0% { flex-basis: 7%; opacity: 0; }
-          100% { flex-basis: 12.5%; opacity: 1; }
+          100% { flex-basis: 14%; opacity: 1; }
         }
         
         @keyframes Navbar_scale-out {
-          0% { flex-basis: 12.5%; opacity: 1; }
+          0% { flex-basis: 14%; opacity: 1; }
           100% { flex-basis: 0; opacity: 0; margin: 0; padding: 0; }
         }
       `}} />
 
       {/* Main Navbar */}
-      <div className={`header_style2 ${scrolled ? 'sticky' : ''}`}>
+      <div className={`header_style2 ${navState === 'collapsed' ? 'sticky' : navState === 'expanded' ? 'scrolled-up-expanded' : ''}`}>
         <div className="container-fluid">
           <ul className="header_navigation2">
-            <li className="nav-item"><a href="#overview">Overview</a></li>
             <li className="nav-item"><a href="#projects">Projects</a></li>
             <li className="nav-item"><a href="#highlights">Highlights</a></li>
             <li className="nav-item"><a href="#amenities">Amenities</a></li>
@@ -332,7 +383,6 @@ const Navbar = ({ setIsOpen }) => {
         </div>
         <div className="menu_container">
           <ul>
-            <li><a href="#overview" onClick={() => setMobileOpen(false)}>Overview</a></li>
             <li><a href="#projects" onClick={() => setMobileOpen(false)}>Projects</a></li>
             <li><a href="#highlights" onClick={() => setMobileOpen(false)}>Highlights</a></li>
             <li><a href="#amenities" onClick={() => setMobileOpen(false)}>Amenities</a></li>

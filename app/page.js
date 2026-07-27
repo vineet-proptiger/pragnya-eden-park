@@ -35,13 +35,13 @@ export default function Home() {
       <Navbar setIsOpen={setIsOpen} />
       <Hero setIsOpen={setIsOpen} />
       <Overview setIsOpen={setIsOpen} />
-      <Projects setIsOpen={setIsOpen} />
-      <Highlights setIsOpen={setIsOpen} />
-      {/* <Gallery setIsOpen={setIsOpen} /> */}
-      {/* <CarouselSection setIsOpen={setIsOpen} /> */}
       <Amenities setIsOpen={setIsOpen} />
       {/* <ExclusiveAmenities /> */}
       <Pricing setIsOpen={setIsOpen} />
+      <Highlights setIsOpen={setIsOpen} />
+      {/* <Gallery setIsOpen={setIsOpen} /> */}
+      {/* <CarouselSection setIsOpen={setIsOpen} /> */}
+      <Projects setIsOpen={setIsOpen} />
       <Location />
       {/* <Sustainability /> */}
       {/* <JapaneseExcellence /> */}
