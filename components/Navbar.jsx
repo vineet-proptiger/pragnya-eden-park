@@ -99,24 +99,18 @@ const Navbar = ({ setIsOpen }) => {
           animation: 1.2s cubic-bezier(0.58, 0, 0.01, 1) 0s 1 normal forwards running Navbar_scale-out;
         }
 
-        .header_style2 .header_navigation2 li.navbar-logo {
-          opacity: 1;
-          flex-basis: auto;
-          animation: none !important;
-          padding: 10px 20px;
-          border-radius: 8px;
-          transition: background-color 0.5s ease, box-shadow 0.5s ease;
-        }
-
-        .header_style2.sticky .header_navigation2 li.navbar-logo {
+        .header_style2 .header_navigation2 li.navbar-logo,
+        .header_style2.sticky .header_navigation2 li.navbar-logo,
+        .header_style2.scrolled-up-expanded .header_navigation2 li.navbar-logo {
           animation: none !important;
           opacity: 1;
           flex-basis: auto;
-          background-color: #fff;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-          margin-top: -10px;
-          padding-top: 20px;
-          border-radius: 0 0 12px 12px;
+          background-color: #fff !important;
+          padding: 10px 24px !important;
+          border-radius: 14px !important;
+          box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1) !important;
+          margin: 0 !important;
+          transition: box-shadow 0.3s ease !important;
         }
 
         .header_style2 .header_navigation2 li a {
@@ -154,16 +148,15 @@ const Navbar = ({ setIsOpen }) => {
           border-color: rgba(201, 169, 110, 0.9);
         }
 
-        .nav-logo {
-          height: 58px;
+        .nav-logo,
+        .header_style2.sticky .nav-logo,
+        .header_style2.scrolled-up-expanded .nav-logo {
+          height: 52px !important;
           width: auto;
           display: block;
           object-fit: contain;
-          transition: transform 0.3s ease;
-        }
-
-        .header_style2.sticky .nav-logo {
-          transform: scale(1.05);
+          transform: none !important;
+          transition: none !important;
         }
 
         /* Reappear Full Navbar on Scroll Up (Smart Sticky Navbar) */
@@ -182,22 +175,6 @@ const Navbar = ({ setIsOpen }) => {
         .header_style2.scrolled-up-expanded .header_navigation2 li {
           animation: 0.5s cubic-bezier(0.25, 1, 0.5, 1) 0s 1 normal forwards running Navbar_scale-in !important;
           opacity: 1;
-        }
-
-        .header_style2.scrolled-up-expanded .header_navigation2 li.navbar-logo {
-          animation: none !important;
-          opacity: 1;
-          flex-basis: auto;
-          background-color: #fff;
-          padding: 6px 16px;
-          border-radius: 8px;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-          margin: 0;
-          transition: all 0.4s ease;
-        }
-
-        .header_style2.scrolled-up-expanded .nav-logo {
-          height: 48px;
         }
 
         .mob_nav_trigger {
@@ -239,8 +216,10 @@ const Navbar = ({ setIsOpen }) => {
             border-radius: 0;
           }
           
-          .nav-logo {
-            height: 42px;
+          .nav-logo,
+          .header_style2.sticky .nav-logo,
+          .header_style2.scrolled-up-expanded .nav-logo {
+            height: 42px !important;
           }
           
           .mob_nav_trigger {
