@@ -231,6 +231,11 @@
     overflow-x: hidden;
   }
 
+  /* Prevent fixed navbar from hiding section top content on scroll jumping */
+  section, [id] {
+    scroll-margin-top: 90px !important;
+  }
+
   body {
     @apply antialiased;
     font-family: var(--font-sans), 'Open Sans', sans-serif;
