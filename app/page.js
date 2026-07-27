@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import dynamic from 'next/dynamic'
+import { galleryImages, amenityImages } from '../lib/images'
 
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
@@ -35,12 +36,13 @@ export default function Home() {
       <Navbar setIsOpen={setIsOpen} />
       <Hero setIsOpen={setIsOpen} />
       <Overview setIsOpen={setIsOpen} />
-      <Amenities setIsOpen={setIsOpen} />
+      {/* <Amenities setIsOpen={setIsOpen} /> */}
+      <CarouselSection setIsOpen={setIsOpen} title="Glimpses of the Interior Masterpiece" id="interior-masterpiece" images={amenityImages} />
+      <CarouselSection setIsOpen={setIsOpen} title="Glimpses of the Exterior Masterpiece" id="exterior-masterpiece" images={galleryImages} />
       {/* <ExclusiveAmenities /> */}
       <Pricing setIsOpen={setIsOpen} />
       <Highlights setIsOpen={setIsOpen} />
       {/* <Gallery setIsOpen={setIsOpen} /> */}
-      {/* <CarouselSection setIsOpen={setIsOpen} /> */}
       <Projects setIsOpen={setIsOpen} />
       <Location />
       {/* <Sustainability /> */}

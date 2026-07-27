@@ -1,23 +1,23 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import { galleryImages } from '../lib/images'
+import Image from 'next/image'
 
 const F_JOST = 'var(--font-jost), Montserrat, sans-serif'
 
-
-const CarouselSection = ({ setIsOpen }) => {
+const CarouselSection = ({ setIsOpen, title = "Glimpses of Masterpiece", id = "homes-designed", images = [] }) => {
   const [index, setIndex] = useState(1)
   const [isTransitioning, setIsTransitioning] = useState(true)
   const [selectedImgIndex, setSelectedImgIndex] = useState(null)
   const [userInteracted, setUserInteracted] = useState(0)
 
-  const numItems = galleryImages.length;
-  const extendedImages = [
-    galleryImages[numItems - 1],
-    ...galleryImages,
-    galleryImages[0],
-    galleryImages[1]
-  ].filter(Boolean);
+  const numItems = images?.length || 0;
+  const extendedImages = numItems > 0 ? [
+    images[numItems - 1],
+    ...images,
+    images[0],
+    images[1] || images[0],
+    images[2] || images[0]
+  ].filter(Boolean) : [];
 
   const getRealIndex = (idx) => {
     if (idx === 0) return numItems - 1;
@@ -30,41 +30,50 @@ const CarouselSection = ({ setIsOpen }) => {
     if (selectedImgIndex === null) return
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') setSelectedImgIndex(null)
-      if (e.key === 'ArrowRight') setSelectedImgIndex((prev) => (prev + 1) % galleryImages.length)
-      if (e.key === 'ArrowLeft') setSelectedImgIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)
+      if (e.key === 'ArrowRight') setSelectedImgIndex((prev) => (prev + 1) % (images?.length || 1))
+      if (e.key === 'ArrowLeft') setSelectedImgIndex((prev) => (prev - 1 + (images?.length || 1)) % (images?.length || 1))
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [selectedImgIndex])
+  }, [selectedImgIndex, images?.length])
 
   const nextLightboxImg = (e) => {
     e.stopPropagation()
-    setSelectedImgIndex((prev) => (prev + 1) % galleryImages.length)
+    setSelectedImgIndex((prev) => (prev + 1) % (images?.length || 1))
   }
 
   const prevLightboxImg = (e) => {
     e.stopPropagation()
-    setSelectedImgIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)
+    setSelectedImgIndex((prev) => (prev - 1 + (images?.length || 1)) % (images?.length || 1))
   }
 
   const nextSlide = () => {
     if (!isTransitioning) return;
-    setIndex((prev) => prev + 1);
+    setIndex((prev) => {
+      if (prev >= numItems + 1) return prev;
+      return prev + 1;
+    });
     setUserInteracted(Date.now());
   }
 
   const prevSlide = () => {
     if (!isTransitioning) return;
-    setIndex((prev) => prev - 1);
+    setIndex((prev) => {
+      if (prev <= 0) return prev;
+      return prev - 1;
+    });
     setUserInteracted(Date.now());
   }
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setIndex((prev) => prev + 1);
+      setIndex((prev) => {
+        if (prev >= numItems + 1) return prev;
+        return prev + 1;
+      });
     }, 4000); // Autoplay every 4s
     return () => clearInterval(timer);
-  }, [userInteracted]);
+  }, [userInteracted, numItems]);
 
   // Handle the seamless jump
   useEffect(() => {
@@ -95,8 +104,11 @@ const CarouselSection = ({ setIsOpen }) => {
     }
   }, [isTransitioning]);
 
+  if (!images || images.length === 0) return null;
+
   return (
-    <section id="homes-designed" style={{
+    <section id={id} style={{
+      scrollMarginTop: '80px',
       padding: '42px 0 72px 0',
       background: '#f9f9f9',
       color: '#121212',
@@ -115,27 +127,12 @@ const CarouselSection = ({ setIsOpen }) => {
       `}} />
       <div className="container mx-auto px-4 md:px-8 max-w-[1200px]">
 
-        {/* ── Header Row ── */}
-        <div className="flex items-center justify-between mb-8 gap-6 w-full min-h-[50px]">
-
-          {/* Centered Heading */}
-          <div className="flex-1 flex justify-center lg:pl-32">
-            <h2 style={{
-              fontFamily: F_JOST, fontWeight: '700', fontSize: '24px',
-              color: '#3A2A0E', letterSpacing: '0.1em', margin: 0,
-            }} className="text-center">Glimpses of Masterpiece</h2>
-          </div>
-
-          {/* Right side Buttons */}
-          <div className="flex items-center">
-            <button className="btn-brand hidden sm:flex" onClick={() => setIsOpen(true)} style={{ padding: '12px 24px', fontSize: '12px' }}>
-              ENQUIRE NOW
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="ml-2">
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </button>
-          </div>
+        <div className="text-center mb-10 md:mb-12" data-aos="fade-up" data-aos-duration="1000">
+          <h2 className="heading text-[31px] md:text-[46px] font-medium leading-[40px] md:leading-[56px] tracking-[.02em] uppercase text-center mx-auto" style={{
+            color: '#000242', marginBottom: 0
+          }}>
+            {title}
+          </h2>
         </div>
 
         {/* ── Main Sliding Track Gallery (Premium & Zero-Flash) ── */}
@@ -159,18 +156,39 @@ const CarouselSection = ({ setIsOpen }) => {
                 style={{ width: 'var(--slide-w)', aspectRatio: '16/9' }}
                 onClick={() => setSelectedImgIndex(getRealIndex(idx))}
               >
-                <img
-                  src={img.src}
-                  alt={img.alt || `Gallery Image ${idx + 1}`}
-                  loading={idx === 0 || idx === 1 || Math.abs(idx - index) <= 1 ? 'eager' : 'lazy'}
-                  className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none transition-transform duration-[800ms] ease-out group-hover:scale-110"
+                <Image
+                  src={img.src || img.img}
+                  alt={img.alt || img.title || img.label || `Gallery Image ${idx + 1}`}
+                  fill
+                  priority={idx === 0 || idx === 1 || Math.abs(idx - index) <= 1} // Preload active and adjacent images for instant rendering
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 65vw, 900px"
+                  className={`object-cover select-none pointer-events-none transition-transform duration-[6000ms] ease-out ${getRealIndex(idx) === getRealIndex(index) ? 'scale-110' : 'scale-100'}`}
                 />
                 
                 {/* Image Overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-3 md:p-8 lg:p-10 pb-5 md:pb-10 flex flex-col justify-end"
                      style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, transparent 100%)', minHeight: '40%' }}>
-                    <h3 className="text-white text-base md:text-2xl font-bold mb-1 tracking-wide" style={{ fontFamily: F_JOST }}>{img.title}</h3>
-                    <p className="text-white/90 text-[11px] md:text-base leading-snug md:leading-relaxed max-w-2xl font-sans">{img.desc}</p>
+                    <h3 
+                      className="text-white text-base md:text-2xl font-bold mb-1 tracking-wide" 
+                      style={{ 
+                        fontFamily: F_JOST,
+                        opacity: getRealIndex(idx) === getRealIndex(index) ? 1 : 0,
+                        transform: getRealIndex(idx) === getRealIndex(index) ? 'translateY(0)' : 'translateY(20px)',
+                        transition: 'all 0.6s cubic-bezier(0.25, 1, 0.5, 1) 0.3s'
+                      }}
+                    >
+                      {img.title || img.label}
+                    </h3>
+                    <p 
+                      className="text-white/90 text-[11px] md:text-base leading-snug md:leading-relaxed max-w-2xl font-sans"
+                      style={{
+                        opacity: getRealIndex(idx) === getRealIndex(index) ? 1 : 0,
+                        transform: getRealIndex(idx) === getRealIndex(index) ? 'translateY(0)' : 'translateY(20px)',
+                        transition: 'all 0.6s cubic-bezier(0.25, 1, 0.5, 1) 0.45s'
+                      }}
+                    >
+                      {img.desc}
+                    </p>
                     
                     {/* Progress Bar Container */}
                     <div className="absolute bottom-0 left-0 right-0 h-1 md:h-1.5 bg-white/20">
@@ -257,14 +275,14 @@ const CarouselSection = ({ setIsOpen }) => {
             className="absolute top-6 left-6 text-white/70 font-medium tracking-widest text-xs p-2 bg-black/40 rounded"
             style={{ fontFamily: F_JOST }}
           >
-            {selectedImgIndex + 1} / {galleryImages.length}
+            {selectedImgIndex + 1} / {images?.length || 0}
           </div>
 
           {/* Center Content */}
           <div className="relative w-full max-w-[90vw] max-h-[80vh] flex flex-col items-center justify-center">
             <img 
-              src={galleryImages[selectedImgIndex].src} 
-              alt={galleryImages[selectedImgIndex].alt || 'Gallery Preview'} 
+              src={images[selectedImgIndex]?.src || images[selectedImgIndex]?.img} 
+              alt={images[selectedImgIndex]?.alt || images[selectedImgIndex]?.title || images[selectedImgIndex]?.label || 'Gallery Preview'} 
               className="max-w-full max-h-[80vh] object-contain shadow-2xl transition-all duration-300 rounded"
               onClick={(e) => e.stopPropagation()} 
             />
@@ -273,7 +291,7 @@ const CarouselSection = ({ setIsOpen }) => {
               className="mt-4 text-center text-white/80 text-xs md:text-sm tracking-wide max-w-[80vw]"
               style={{ fontFamily: F_JOST }}
             >
-              {galleryImages[selectedImgIndex].alt}
+              {images[selectedImgIndex]?.alt || images[selectedImgIndex]?.title || images[selectedImgIndex]?.label}
             </div>
           </div>
         </div>
