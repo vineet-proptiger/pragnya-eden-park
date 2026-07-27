@@ -16,17 +16,28 @@ const Amenities = () => {
   const headingRef = useRef(null)
   const sliderRef = useRef(null)
   const [selectedAmenity, setSelectedAmenity] = useState(null)
+  const [isSliderReady, setIsSliderReady] = useState(false)
 
   useEffect(() => {
+    // React-Slick measures its container when it mounts. Rendering it only after
+    // hydration prevents a zero-width track in the production mobile build.
+    setIsSliderReady(true)
+
     // Recalculate after hydration and after the browser has established the viewport width.
     // This is important for mobile Safari, where Slick can initialise before its track has a width.
+    // Extra late triggers (2.5s, 4s) handle production builds where CSS chunks load asynchronously.
     const t1 = setTimeout(() => {
       if (sliderRef.current) sliderRef.current.slickGoTo(0, true);
       window.dispatchEvent(new Event('resize'));
     }, 100);
     const t2 = setTimeout(() => window.dispatchEvent(new Event('resize')), 600);
     const t3 = setTimeout(() => window.dispatchEvent(new Event('resize')), 1500);
-    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
+    const t4 = setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+      if (sliderRef.current) sliderRef.current.slickGoTo(0, true);
+    }, 2500);
+    const t5 = setTimeout(() => window.dispatchEvent(new Event('resize')), 4000);
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(t4); clearTimeout(t5); };
   }, []);
 
   useEffect(() => {
@@ -130,7 +141,8 @@ const Amenities = () => {
       {
         breakpoint: 767,
         settings: {
-          centerPadding: '18px',
+          centerMode: false,
+          centerPadding: '0px',
           autoplaySpeed: 2000,
         }
       },
@@ -197,11 +209,6 @@ const Amenities = () => {
         .amenities-slider .slick-list {
           padding-top: 24px !important;
           padding-bottom: 24px !important;
-        }
-
-        .amenities-slider .slick-track {
-          display: flex;
-          align-items: center;
         }
 
         .amenities-slider .slick-slide {
@@ -424,13 +431,31 @@ const Amenities = () => {
           }
 
           .amenities-box {
-            transform: scale(0.88);
+            transform: scale(1) !important;
+            opacity: 1 !important;
+            width: 100% !important;
+            aspect-ratio: 16/9;
+          }
+
+          .amenities-box img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            display: block !important;
           }
 
           .amenities-slider .slick-center .amenities-box,
           .amenities-slider .slick-active .amenities-box {
-            transform: scale(1);
-            opacity: 1;
+            transform: scale(1) !important;
+            opacity: 1 !important;
+          }
+
+          .amenities-slider .slick-track {
+            display: flex !important;
+          }
+
+          .amenities-slider .slick-slide {
+            min-height: 1px;
           }
         }
 
@@ -470,34 +495,41 @@ const Amenities = () => {
       
       <div style={{ width: '100%', margin: '0 auto', overflow: 'hidden' }} data-aos="fade-up" data-aos-duration="1000">
         <div className="amenities-slider">
-          <Slider ref={sliderRef} {...settings}>
-            {amenitiesList.map((item, idx) => (
-              <div key={idx}>
-                <div
-                  className="amenities-box"
-                  role="button"
-                  tabIndex={0}
-                  aria-label={`Open ${item.title} image`}
-                  onClick={() => setSelectedAmenity(item)}
-                  onKeyDown={(event) => {
-                    if (event.key === 'Enter' || event.key === ' ') {
-                      event.preventDefault()
-                      setSelectedAmenity(item)
-                    }
-                  }}
-                >
-                  <img 
-                    src={item.img} 
-                    alt={item.title} 
-                    onLoad={() => {
-                      if (idx < 5) window.dispatchEvent(new Event('resize'));
-                    }} 
-                  />
-                  <div className="amenity_caption">{item.title}</div>
+          {isSliderReady ? (
+            <Slider ref={sliderRef} {...settings}>
+              {amenitiesList.map((item, idx) => (
+                <div key={idx}>
+                  <div
+                    className="amenities-box"
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Open ${item.title} image`}
+                    onClick={() => setSelectedAmenity(item)}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault()
+                        setSelectedAmenity(item)
+                      }
+                    }}
+                  >
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      onLoad={() => {
+                        if (idx < 5) window.dispatchEvent(new Event('resize'))
+                      }}
+                    />
+                    <div className="amenity_caption">{item.title}</div>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </Slider>
+              ))}
+            </Slider>
+          ) : (
+            <div className="amenities-box amenities-slider-fallback">
+              <img src={amenitiesList[0].img} alt={amenitiesList[0].title} />
+              <div className="amenity_caption">{amenitiesList[0].title}</div>
+            </div>
+          )}
         </div>
       </div>
 

@@ -1,4 +1,6 @@
 import './globals.css'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 import { Open_Sans, Montserrat, Cormorant_Garamond, Poppins } from 'next/font/google'
 import { CITY_DISPLAY } from '../lib/config'
 import localFont from 'next/font/local'

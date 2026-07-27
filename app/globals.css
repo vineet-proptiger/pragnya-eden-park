@@ -164,6 +164,59 @@
   font-weight: 700;
 }
 
+/* ─── Slick Carousel – Production Build Defensive Rules ──────── */
+/* Prevents zero-width/height track collapse when CSS loads after mount */
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+}
+.slick-list {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.slick-track {
+  position: relative;
+  display: flex !important;
+  top: 0;
+  left: 0;
+}
+.slick-slide {
+  display: block;
+  float: left;
+  height: auto;
+  min-height: 1px;
+}
+.slick-slide > div {
+  width: 100%;
+}
+
+/* Ensure amenities images always render on mobile in production */
+@media (max-width: 767px) {
+  .amenities-slider .slick-track {
+    display: flex !important;
+  }
+  .amenities-slider .slick-slide {
+    width: 100% !important;
+    opacity: 1;
+  }
+  .amenities-slider .slick-slide .amenities-box {
+    transform: scale(1) !important;
+    opacity: 1 !important;
+    width: 100% !important;
+    aspect-ratio: 16/9;
+  }
+  .amenities-slider .slick-slide .amenities-box img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+}
+
 /* ─── Base ───────────────────────────────────────────────────── */
 @layer base {
 

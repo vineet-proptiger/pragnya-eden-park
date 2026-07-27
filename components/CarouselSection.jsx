@@ -1,6 +1,5 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import Image from 'next/image'
 import { galleryImages } from '../lib/images'
 
 const F_JOST = 'var(--font-jost), Montserrat, sans-serif'
@@ -160,13 +159,11 @@ const CarouselSection = ({ setIsOpen }) => {
                 style={{ width: 'var(--slide-w)', aspectRatio: '16/9' }}
                 onClick={() => setSelectedImgIndex(getRealIndex(idx))}
               >
-                <Image
+                <img
                   src={img.src}
                   alt={img.alt || `Gallery Image ${idx + 1}`}
-                  fill
-                  priority={idx === 0 || idx === 1 || Math.abs(idx - index) <= 1} // Preload active and adjacent images for instant rendering
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 65vw, 900px"
-                  className="object-cover select-none pointer-events-none transition-transform duration-[800ms] ease-out group-hover:scale-110"
+                  loading={idx === 0 || idx === 1 || Math.abs(idx - index) <= 1 ? 'eager' : 'lazy'}
+                  className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none transition-transform duration-[800ms] ease-out group-hover:scale-110"
                 />
                 
                 {/* Image Overlay */}
