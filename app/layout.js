@@ -40,8 +40,34 @@ const nephilm = localFont({
 })
 
 export const metadata = {
+  metadataBase: new URL('https://pragnyaedenpark.co.in'),
   title: 'Pragnya Eden Park | Premium 2 & 3 BHK Homes in Siruseri, Chennai',
   description: "Pragnya Eden Park — OMR Chennai's premier integrated residential township in Siruseri. Premium 2 & 3 BHK luxury residences spread over 92 acres. Designed for elevated living.",
+  alternates: {
+    canonical: 'https://pragnyaedenpark.co.in',
+  },
+  openGraph: {
+    title: 'Pragnya Eden Park | Luxury Integrated Township in Siruseri',
+    description: "Discover luxury 2 & 3 BHK apartments in Pragnya Eden Park, an integrated 92-acre township in Siruseri OMR Chennai.",
+    url: 'https://pragnyaedenpark.co.in',
+    siteName: 'Pragnya Eden Park',
+    images: [
+      {
+        url: '/projects/iris-tower.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Pragnya Eden Park Siruseri Chennai',
+      },
+    ],
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Pragnya Eden Park | Premium 2 & 3 BHK Homes in Siruseri',
+    description: "OMR Chennai's premier integrated residential township in Siruseri.",
+    images: ['/projects/iris-tower.jpg'],
+  },
 }
 
 import SmoothScroll from '../components/SmoothScroll'
@@ -50,39 +76,36 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <GoogleTagManager gtmId="GTM-575H8R87" />
-      {/* <head>
+      <head>
         <Script
-          id="json-ld-article"
+          id="json-ld-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Article",
-              "mainEntityOfPage": {
-                "@type": "WebPage",
-                "@id": "https://prestigepalmcourtmahalaxmi.in/"
+              "@type": "RealEstateAgent",
+              "name": "Pragnya Eden Park Siruseri",
+              "url": "https://pragnyaedenpark.co.in",
+              "logo": "https://pragnyaedenpark.co.in/projects/iris-tower.jpg",
+              "image": "https://pragnyaedenpark.co.in/projects/iris-tower.jpg",
+              "description": "Pragnya Eden Park, OMR Chennai's premier luxury integrated township in Siruseri offering 2 & 3 BHK premium residences.",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Eden Park, Siruseri SIPCOT IT Park Road, OMR",
+                "addressLocality": "Chennai",
+                "addressRegion": "Tamil Nadu",
+                "postalCode": "603103",
+                "addressCountry": "IN"
               },
-              "headline": "Pragnya Eden Park | Premium 2 & 3 BHK Homes in Siruseri, Chennai",
-              "description": "Pragnya Eden Park, OMR Chennai's premier luxury township in Siruseri. Premium 2 & 3 BHK residences in a 92-acre green haven.",
-              "image": "https://prestigepalmcourtmahalaxmi.in/_next/image?url=%2Fimages%2Fhero%2Fbanner1.webp&w=1200&q=75",
-              "author": {
-                "@type": "Organization",
-                "name": "Authorized Marketing Partner",
-                "url": "https://www.proptiger.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Authorized Partner",
-                "logo": {
-                  "@type": "ImageObject",
-                  "url": "https://www.proptiger.com/"
-                }
-              },
-              "datePublished": "2026-06-10"
+              "telephone": "+919718344024",
+              "priceRange": "₹60 Lakhs - ₹1.25 Cr",
+              "sameAs": [
+                "https://pragnyaedenpark.co.in"
+              ]
             })
           }}
         />
-      </head> */}
+      </head>
       <body className={`${openSans.variable} ${montserrat.variable} ${cormorant.variable} ${nephilm.variable} ${poppins.variable} font-sans text-dark antialiased`}>
         <Script id="gtag-init" strategy="beforeInteractive">
           {`window.dataLayer = window.dataLayer || [];

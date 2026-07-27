@@ -16,8 +16,10 @@ const Amenities = () => {
   const headingRef = useRef(null)
   const sliderRef = useRef(null)
   const [selectedAmenity, setSelectedAmenity] = useState(null)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     // Prevent React-Slick blank rendering on initial load across devices by triggering layout refresh
     const t1 = setTimeout(() => {
       if (sliderRef.current) sliderRef.current.slickGoTo(0, true);
@@ -187,28 +189,33 @@ const Amenities = () => {
         }
 
         .amenities-slider .slick-track {
-          display: flex;
-          align-items: center;
+          display: flex !important;
+          align-items: stretch !important;
         }
 
         .amenities-slider .slick-slide {
+          height: auto !important;
+          display: flex !important;
+          align-items: center;
+          justify-content: center;
+          padding: 0 10px;
           position: relative;
           z-index: 1;
         }
 
         .amenities-box {
           position: relative !important;
-          border-radius: 10px;
+          border-radius: 12px;
           overflow: hidden;
-          margin: 0;
+          margin: 0 auto;
           cursor: zoom-in;
-          transform: scale(0.8);
+          transform: scale(0.85);
           transform-origin: center;
           transition: transform 0.55s ease, opacity 0.55s ease;
-          opacity: 0.82;
+          opacity: 0.85;
           width: 100%;
-          aspect-ratio: 16/9;
-          min-height: 220px;
+          min-height: 240px;
+          display: block !important;
           background-color: #e3d8cf;
         }
 
@@ -413,13 +420,21 @@ const Amenities = () => {
           }
 
           .amenities-box {
-            transform: scale(0.9);
+            transform: scale(0.96) !important;
+            opacity: 1 !important;
+            min-height: 230px !important;
+          }
+
+          .amenities-slider .slick-center .amenities-box,
+          .amenities-slider .slick-active .amenities-box {
+            transform: scale(1) !important;
+            opacity: 1 !important;
           }
 
           .amenity_caption {
             right: 10px;
-            font-size: 16px;
-            padding: 8px 10px;
+            font-size: 14px;
+            padding: 6px 12px;
           }
         }
       `}</style>
@@ -430,36 +445,41 @@ const Amenities = () => {
         </h2>
       </section>
       
-      <div style={{ width: '100%', margin: '0 auto', overflow: 'hidden' }} data-aos="fade-up" data-aos-duration="1000">
-        <div className="amenities-slider">
-          <Slider ref={sliderRef} {...settings}>
-            {amenitiesList.map((item, idx) => (
-              <div key={idx}>
-                <div
-                  className="amenities-box"
-                  role="button"
-                  tabIndex={0}
-                  aria-label={`Open ${item.title} image`}
-                  onClick={() => setSelectedAmenity(item)}
-                  onKeyDown={(event) => {
-                    if (event.key === 'Enter' || event.key === ' ') {
-                      event.preventDefault()
-                      setSelectedAmenity(item)
-                    }
-                  }}
-                >
-                  <img 
-                    src={item.img} 
-                    alt={item.title} 
-                    onLoad={() => {
-                      if (idx < 5) window.dispatchEvent(new Event('resize'));
-                    }} 
-                  />
-                  <div className="amenity_caption">{item.title}</div>
+      <div style={{ width: '100%', margin: '0 auto', overflow: 'hidden', minHeight: '280px' }} data-aos="fade-up" data-aos-duration="1000">
+        <div className="amenities-slider w-full">
+          {!mounted ? (
+            <div className="w-[88%] max-w-[700px] h-[230px] sm:h-[350px] md:h-[450px] bg-[#e3d8cf] rounded-2xl animate-pulse mx-auto shadow-sm my-6" />
+          ) : (
+            <Slider ref={sliderRef} {...settings}>
+              {amenitiesList.map((item, idx) => (
+                <div key={idx} className="w-full">
+                  <div
+                    className="amenities-box"
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Open ${item.title} image`}
+                    onClick={() => setSelectedAmenity(item)}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault()
+                        setSelectedAmenity(item)
+                      }
+                    }}
+                  >
+                    <img 
+                      src={item.img} 
+                      alt={item.title}
+                      className="w-full h-full object-cover" 
+                      onLoad={() => {
+                        if (idx < 6) window.dispatchEvent(new Event('resize'));
+                      }} 
+                    />
+                    <div className="amenity_caption">{item.title}</div>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </Slider>
+              ))}
+            </Slider>
+          )}
         </div>
       </div>
 

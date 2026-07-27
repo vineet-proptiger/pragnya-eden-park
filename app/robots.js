@@ -3,9 +3,7 @@ export default function robots() {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: '',
     },
-    sitemap: 'https://prestigepalmcourtmahalaxmi.in/sitemap.xml',
+    sitemap: 'https://pragnyaedenpark.co.in/sitemap.xml',
   }
 }
-

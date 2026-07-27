@@ -38,6 +38,10 @@ const Footer = () => (
           &copy; 2026 Pragnya Eden Park. All rights reserved.
         </p>
         <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
+          <a href="https://pragnyaedenpark.co.in" target="_blank" rel="noopener noreferrer" style={{ fontSize: '13px', color: '#ccc', fontFamily: F_SANS, textDecoration: 'none', transition: 'color 0.3s' }}>
+            www.pragnyaedenpark.co.in
+          </a>
+          <span style={{ color: '#444' }}>|</span>
           <Link href="/privacy-policy" style={{ fontSize: '13px', color: 'var(--color-gold)', fontFamily: F_SANS }}>
             Privacy Policy
           </Link>
