@@ -1,0 +1,110 @@
+'use client'
+import React, { useState } from 'react'
+import { masterplanImages } from '../lib/images'
+
+const plans = [
+  { 
+    label: '2 BHK Residence', 
+    img: masterplanImages.bhk2,
+    details: {
+        carpet: '790 Sq. Ft. (73.39 Sq. Mtr.)',
+        apartment: '960 Sq. Ft. (89.18 Sq. Mtr.)',
+        super: '1,100.00 Sq. Ft. (102.19 Sq. Mtr.)'
+    }
+  },
+  { 
+    label: '3 BHK Type 1 (Comfort)', 
+    img: masterplanImages.bhk3,
+    details: {
+        carpet: '1,040 Sq. Ft. (96.61 Sq. Mtr.)',
+        apartment: '1,260 Sq. Ft. (117.05 Sq. Mtr.)',
+        super: '1,450.00 Sq. Ft. (134.70 Sq. Mtr.)'
+    }
+  },
+  { 
+    label: '3 BHK Type 2 (Premium)', 
+    img: masterplanImages.bhk45,
+    details: {
+        carpet: '1,210 Sq. Ft. (112.41 Sq. Mtr.)',
+        apartment: '1,465 Sq. Ft. (136.10 Sq. Mtr.)',
+        super: '1,685.00 Sq. Ft. (156.54 Sq. Mtr.)'
+    }
+  },
+]
+
+const MasterPlan = ({ setIsOpen }) => {
+  const [activeTab, setActiveTab] = useState('master')
+
+  return (
+    <section id="masterplan" className="relative py-20 bg-[#f4ebe4] overflow-hidden">
+      {/* Background Logos */}
+      <img src="https://theoryza.co.in/img/logo/oryza-o.png?ver17" alt="" className="absolute -top-20 -right-20 opacity-[0.15] w-[400px] pointer-events-none animate-[spin_20s_linear_infinite]" />
+      <img src="https://theoryza.co.in/img/logo/oryza-o.png?ver17" alt="" className="absolute -bottom-20 -left-20 opacity-[0.15] w-[400px] pointer-events-none animate-[spin_20s_linear_infinite]" />
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="mb-12 text-center" data-aos="fade-up" data-aos-duration="1000">
+          <h3 className="text-[#000242] text-[31px] lg:text-[42px] font-medium uppercase tracking-wide mb-8 font-montserrat leading-[40px] md:leading-[56px]">
+            Site & Floor Plans
+          </h3>
+
+          {/* Tabs */}
+          <div className="flex justify-center items-center">
+            <button 
+              onClick={() => setActiveTab('master')}
+              className={`px-8 py-3 text-[17px] font-medium transition-all border border-[#000242] ${activeTab === 'master' ? 'bg-[#000242] text-white' : 'bg-transparent text-[#000242]'}`}
+            >
+              Master Plan
+            </button>
+            <button 
+              onClick={() => setActiveTab('floor')}
+              className={`px-8 py-3 text-[17px] font-medium transition-all border border-l-0 border-[#000242] ${activeTab === 'floor' ? 'bg-[#000242] text-white' : 'bg-transparent text-[#000242]'}`}
+            >
+              Floor Plan
+            </button>
+          </div>
+        </div>
+
+        {/* Tab Content */}
+        <div className="max-w-[1100px] mx-auto">
+          {activeTab === 'master' && (
+            <div className="w-full max-w-[800px] mx-auto bg-[#fdfbf7] p-4 shadow-sm" data-aos="zoom-in" data-aos-duration="1000">
+              <a onClick={() => setIsOpen && setIsOpen(true)} className="cursor-pointer block relative">
+                <img src={masterplanImages.masterPlan} alt="Master Plan" className="w-full h-auto mx-auto" />
+              </a>
+            </div>
+          )}
+
+          {activeTab === 'floor' && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {plans.map((plan, idx) => (
+                <div key={idx} className="bg-white rounded-md overflow-hidden shadow-[0_5px_15px_rgba(0,0,0,0.1)] transition-transform hover:-translate-y-1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={idx * 100}>
+                  <a onClick={() => setIsOpen && setIsOpen(true)} className="cursor-pointer block relative h-[260px] overflow-hidden group bg-[#fdfbf7] flex items-center justify-center p-4">
+                    <img 
+                      src={plan.img} 
+                      alt={plan.label} 
+                      className="w-full h-full object-contain filter blur-[6px] group-hover:blur-[3px] transition-all duration-300" 
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-white/20">
+                      <span className="bg-[#000242] text-white px-5 py-3 text-[13px] leading-snug font-semibold uppercase tracking-wider text-center">
+                        Download<br/>Floor Plans
+                      </span>
+                    </div>
+                  </a>
+                  <div className="p-6 text-center border-t border-gray-100 bg-white">
+                    <h4 className="text-[22px] text-[#000242] font-semibold mb-4">{plan.label}</h4>
+                    <p className="text-[14px] text-gray-600 mb-2"><span className="font-semibold text-gray-800">Carpet Area </span>: {plan.details.carpet}</p>
+                    <p className="text-[14px] text-gray-600 mb-2"><span className="font-semibold text-gray-800">Apartment Area </span>: {plan.details.apartment}</p>
+                    <p className="text-[14px] text-gray-600"><span className="font-semibold text-gray-800">Super Built-Up Area </span>: {plan.details.super}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export default MasterPlan
+
