@@ -6,6 +6,7 @@ import { logoImages } from '../lib/images'
 const Navbar = ({ setIsOpen }) => {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [navState, setNavState] = useState('top') // 'top', 'collapsed', 'expanded'
+  const [isOverDark, setIsOverDark] = useState(true)
 
   useEffect(() => {
     let lastScrollY = window.scrollY
@@ -25,10 +26,23 @@ const Navbar = ({ setIsOpen }) => {
         }
       }
 
+      // Automatically detect if navbar is currently over a blue/dark section
+      const darkSections = document.querySelectorAll('#highlights, #location, #developer, .hero-container, footer');
+      let overDarkSection = false;
+      const navY = 80;
+      darkSections.forEach((sec) => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top <= navY && rect.bottom >= navY) {
+          overDarkSection = true;
+        }
+      });
+      setIsOverDark(overDarkSection);
+
       lastScrollY = currentScrollY
     }
 
     window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
@@ -175,6 +189,50 @@ const Navbar = ({ setIsOpen }) => {
         .header_style2.scrolled-up-expanded .header_navigation2 li {
           animation: 0.5s cubic-bezier(0.25, 1, 0.5, 1) 0s 1 normal forwards running Navbar_scale-in !important;
           opacity: 1;
+        }
+
+        .header_style2.scrolled-up-expanded .header_navigation2 li a {
+          color: #000242 !important;
+          font-weight: 600 !important;
+        }
+
+        .header_style2.scrolled-up-expanded .header_navigation2 li a:hover {
+          color: #C9A96E !important;
+        }
+
+        .header_style2.scrolled-up-expanded .header_navigation2 li a.phone-btn {
+          background: #000242 !important;
+          color: #fff !important;
+          border-color: #000242 !important;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .header_style2.scrolled-up-expanded .header_navigation2 li a.phone-btn:hover {
+          background: #C9A96E !important;
+          color: #fff !important;
+          border-color: #C9A96E !important;
+        }
+
+        .header_style2.scrolled-up-expanded.nav-over-dark .header_navigation2 li a {
+          color: #ffffff !important;
+          font-weight: 500 !important;
+        }
+
+        .header_style2.scrolled-up-expanded.nav-over-dark .header_navigation2 li a:hover {
+          color: #C9A96E !important;
+        }
+
+        .header_style2.scrolled-up-expanded.nav-over-dark .header_navigation2 li a.phone-btn {
+          background: rgba(255, 255, 255, 0.15) !important;
+          color: #ffffff !important;
+          border-color: rgba(255, 255, 255, 0.3) !important;
+          box-shadow: none !important;
+        }
+
+        .header_style2.scrolled-up-expanded.nav-over-dark .header_navigation2 li a.phone-btn:hover {
+          background: #C9A96E !important;
+          color: #ffffff !important;
+          border-color: #C9A96E !important;
         }
 
         .mob_nav_trigger {
@@ -326,11 +384,12 @@ const Navbar = ({ setIsOpen }) => {
       `}} />
 
       {/* Main Navbar */}
-      <div className={`header_style2 ${navState === 'collapsed' ? 'sticky' : navState === 'expanded' ? 'scrolled-up-expanded' : ''}`}>
+      <div className={`header_style2 ${navState === 'collapsed' ? 'sticky' : navState === 'expanded' ? 'scrolled-up-expanded' : ''} ${isOverDark ? 'nav-over-dark' : 'nav-over-light'}`}>
         <div className="container-fluid">
           <ul className="header_navigation2">
-            <li className="nav-item"><a href="#projects">Projects</a></li>
+            <li className="nav-item"><a href="#overview">Overview</a></li>
             <li className="nav-item"><a href="#highlights">Highlights</a></li>
+            <li className="nav-item"><a href="#gallery">Gallery</a></li>
             <li className="nav-item"><a href="#amenities">Amenities</a></li>
             
             <li className="navbar-logo">
@@ -339,8 +398,9 @@ const Navbar = ({ setIsOpen }) => {
               </a>
             </li>
             
-            <li className="nav-item"><a href="#location">Location</a></li>
+            <li className="nav-item"><a href="#projects">Projects</a></li>
             <li className="nav-item"><a href="#masterplan">Floor Plan</a></li>
+            <li className="nav-item"><a href="#location">Location</a></li>
             <li className="nav-item"><a href="tel:9718344024" className="phone-btn"><Phone size={14}/> 9718344024</a></li>
           </ul>
         </div>
@@ -362,11 +422,13 @@ const Navbar = ({ setIsOpen }) => {
         </div>
         <div className="menu_container">
           <ul>
-            <li><a href="#projects" onClick={() => setMobileOpen(false)}>Projects</a></li>
+            <li><a href="#overview" onClick={() => setMobileOpen(false)}>Overview</a></li>
             <li><a href="#highlights" onClick={() => setMobileOpen(false)}>Highlights</a></li>
+            <li><a href="#gallery" onClick={() => setMobileOpen(false)}>Gallery</a></li>
             <li><a href="#amenities" onClick={() => setMobileOpen(false)}>Amenities</a></li>
-            <li><a href="#location" onClick={() => setMobileOpen(false)}>Location</a></li>
+            <li><a href="#projects" onClick={() => setMobileOpen(false)}>Projects</a></li>
             <li><a href="#masterplan" onClick={() => setMobileOpen(false)}>Floor Plan</a></li>
+            <li><a href="#location" onClick={() => setMobileOpen(false)}>Location</a></li>
             <li style={{ marginTop: '40px' }}>
               <a href="tel:9718344024" style={{ color: '#C9A96E', fontSize: '20px' }}>
                 <Phone size={20} style={{ display: 'inline', marginRight: '8px' }}/> 9718344024

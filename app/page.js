@@ -37,8 +37,18 @@ export default function Home() {
       <Hero setIsOpen={setIsOpen} />
       <Overview setIsOpen={setIsOpen} />
       {/* <Amenities setIsOpen={setIsOpen} /> */}
-      <CarouselSection setIsOpen={setIsOpen} title="Glimpses of the Interior Masterpiece" id="interior-masterpiece" images={amenityImages} />
-      <CarouselSection setIsOpen={setIsOpen} title="Glimpses of the Exterior Masterpiece" id="exterior-masterpiece" images={galleryImages} />
+      <CarouselSection 
+        setIsOpen={setIsOpen} 
+        title="Gallery Where Every View Tells a Story" 
+        id="gallery" 
+        images={galleryImages} 
+      />
+      <CarouselSection 
+        setIsOpen={setIsOpen} 
+        title="Amenities Indulge in a Lifestyle Beyond Ordinary" 
+        id="amenities" 
+        images={amenityImages} 
+      />
       {/* <ExclusiveAmenities /> */}
       <Pricing setIsOpen={setIsOpen} />
       <Highlights setIsOpen={setIsOpen} />

@@ -67,7 +67,6 @@ const ContactCTA = () => {
           
           {/* Left Content */}
           <div className="text-white" data-aos="fade-right" data-aos-duration="1000">
-            <img src="https://theoryza.co.in/img/logo/oryza-o.png?ver17" alt="Logo" className="w-20 mb-6 opacity-90 filter brightness-0 invert" />
             <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-wider uppercase" style={{ fontFamily: F_JOST }}>
               Get In Touch
             </h2>

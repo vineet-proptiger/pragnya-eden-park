@@ -130,18 +130,19 @@ const Overview = ({ setIsOpen }) => {
       }
     `}</style>
 
-    {/* Background Logo Icon from Theoryza */}
-    <div className="logoicon hidden md:block">
-      <img src="https://theoryza.co.in/img/logo/oryza-o.png?ver17" alt="Icon" className="icon_logo_anim" />
-    </div>
-
     <div className="container mx-auto px-4 sm:px-8 max-w-[1300px] relative z-10">
       <div className="flex flex-col lg:flex-row items-center">
         
         {/* Left Side: Text Content */}
         <div className="w-full lg:w-7/12 pr-0 lg:pr-8">
           <div className="inner-section" data-aos="fade-up" data-aos-duration="1000">
-            <h2 className="heading" data-aos="fade-up" data-aos-duration="1000" style={{ marginBottom: '25px' }}>Overview</h2>
+            <h2 className="heading" data-aos="fade-up" data-aos-duration="1000" style={{ marginBottom: '10px' }}>Overview</h2>
+            {/* Decorative Line */}
+            <div className="flex items-center justify-start mt-2 mb-6" data-aos="fade-up" data-aos-duration="1000">
+              <div className="w-16 h-[1px] bg-[#7d9b93]"></div>
+              <div className="w-2 h-2 rounded-full bg-[#7d9b93] mx-3"></div>
+              <div className="w-16 h-[1px] bg-[#7d9b93]"></div>
+            </div>
             
             <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100" style={{ fontSize: '18px', color: '#333', textAlign: 'justify', marginBottom: '20px', lineHeight: '1.8' }}>
               Pragnya Eden Park, Siruseri is a 92-acre integrated township in the heart of OMR, offering lush green landscapes, rich foliage and a pollution-free environment. Home to the prestigious PSBB School, it features India&apos;s first next-generation sports hub with cricket, futsal, skating, gym and more. Enjoy everyday convenience with an in-house supermarket, salon, cr&egrave;che and Apollo Health Clinic, all strategically located beside SIPCOT IT Park with seamless metro connectivity.

@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const F_JOST = 'var(--font-jost), Montserrat, sans-serif'
 
-const CarouselSection = ({ setIsOpen, title = "Glimpses of Masterpiece", id = "homes-designed", images = [] }) => {
+const CarouselSection = ({ setIsOpen, title = "Glimpses of Masterpiece", subtitle = "", id = "homes-designed", images = [] }) => {
   const [index, setIndex] = useState(1)
   const [isTransitioning, setIsTransitioning] = useState(true)
   const [selectedImgIndex, setSelectedImgIndex] = useState(null)
@@ -112,7 +112,7 @@ const CarouselSection = ({ setIsOpen, title = "Glimpses of Masterpiece", id = "h
       padding: '42px 0 72px 0',
       background: '#f9f9f9',
       color: '#121212',
-      fontFamily: "'bozon-reg', 'Austin', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif",
+      fontFamily: '"Montserrat", var(--font-montserrat), sans-serif',
       fontSize: '15px',
       lineHeight: '150%',
       margin: 0,
@@ -124,15 +124,63 @@ const CarouselSection = ({ setIsOpen, title = "Glimpses of Masterpiece", id = "h
           0% { width: 0%; }
           100% { width: 100%; }
         }
+        .carousel-main-heading {
+          color: #000242 !important;
+          font-family: "Montserrat", var(--font-montserrat), sans-serif !important;
+          font-size: 46px !important;
+          font-weight: 500 !important;
+          line-height: 56px !important;
+          text-transform: uppercase !important;
+          letter-spacing: 0.02em !important;
+          margin-bottom: 0 !important;
+          text-align: center !important;
+        }
+        @media (max-width: 991px) {
+          .carousel-main-heading {
+            font-size: 32px !important;
+            line-height: 40px !important;
+          }
+        }
+        @media (max-width: 575px) {
+          .carousel-main-heading {
+            font-size: 24px !important;
+            line-height: 32px !important;
+          }
+        }
+        .carousel-sub-heading {
+          color: #71717a !important;
+          font-family: "Poppins", var(--font-poppins), sans-serif !important;
+          font-size: 18px !important;
+          text-align: center !important;
+          margin-top: 12px !important;
+          margin-bottom: 0 !important;
+          font-weight: 400 !important;
+          letter-spacing: 0.5px !important;
+        }
+        @media (max-width: 991px) {
+          .carousel-sub-heading {
+            font-size: 16px !important;
+          }
+        }
+        @media (max-width: 575px) {
+          .carousel-sub-heading {
+            font-size: 15px !important;
+            margin-top: 8px !important;
+          }
+        }
       `}} />
       <div className="container mx-auto px-4 md:px-8 max-w-[1200px]">
 
         <div className="text-center mb-10 md:mb-12" data-aos="fade-up" data-aos-duration="1000">
-          <h2 className="heading text-[31px] md:text-[46px] font-medium leading-[40px] md:leading-[56px] tracking-[.02em] uppercase text-center mx-auto" style={{
-            color: '#000242', marginBottom: 0
-          }}>
+          <h2 className="carousel-main-heading mx-auto">
             {title}
           </h2>
+          {/* Decorative Line */}
+          <div className="flex items-center justify-center mt-4 mb-3">
+            <div className="w-16 h-[1px] bg-[#7d9b93]"></div>
+            <div className="w-2 h-2 rounded-full bg-[#7d9b93] mx-3"></div>
+            <div className="w-16 h-[1px] bg-[#7d9b93]"></div>
+          </div>
         </div>
 
         {/* ── Main Sliding Track Gallery (Premium & Zero-Flash) ── */}

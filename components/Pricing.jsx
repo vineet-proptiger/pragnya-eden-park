@@ -66,9 +66,6 @@ const Pricing = ({ setIsOpen }) => {
       id="pricing"
       className="py-16 sm:py-24 px-4 md:px-8 relative overflow-hidden bg-white"
     >
-      {/* Background wavy lines */}
-      <img src="https://theoryza.co.in/img/logo/oryza-o.png?ver17" alt="" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] w-[800px] pointer-events-none" />
-
       <div className="max-w-6xl mx-auto relative z-10">
         
         {/* Section Header */}

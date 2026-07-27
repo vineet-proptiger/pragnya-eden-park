@@ -110,10 +110,16 @@ const Location = () => {
         <div style={{ marginBottom: '50px', textAlign: 'center' }} data-aos="fade-down" data-aos-duration="1000">
            <h2
              className="text-[31px] md:text-[46px] font-medium leading-[40px] md:leading-[56px] uppercase tracking-[.02em] text-[#d3be8a]"
-             style={{ fontFamily: F_JOST }}
+             style={{ fontFamily: F_JOST, marginBottom: '12px' }}
            >
              LOCATION ADVANTAGES
            </h2>
+           {/* Decorative Line */}
+           <div className="flex items-center justify-center mt-3 mb-2">
+             <div className="w-16 h-[1px] bg-[#7d9b93]"></div>
+             <div className="w-2 h-2 rounded-full bg-[#7d9b93] mx-3"></div>
+             <div className="w-16 h-[1px] bg-[#7d9b93]"></div>
+           </div>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8 items-stretch">

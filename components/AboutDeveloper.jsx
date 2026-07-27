@@ -140,12 +140,22 @@ const AboutDeveloper = ({ setIsOpen }) => (
       {/* Two Column Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-stretch max-w-6xl mx-auto">
 
-        {/* Left — Get In Touch Text */}
-        <div className="text-white flex flex-col justify-center" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="100">
-          <img src="https://theoryza.co.in/img/logo/oryza-o.png?ver17" alt="Logo" className="w-20 mb-6 opacity-90 filter brightness-0 invert" />
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-wider uppercase" style={{ fontFamily: F_JOST }}>
+        {/* Left — Get In Touch Text with elegant soft dark shadow card */}
+        <div 
+          className="text-white flex flex-col justify-center p-6 md:p-8 rounded-2xl bg-black/45 backdrop-blur-[3px] border border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.5)]" 
+          data-aos="fade-right" 
+          data-aos-duration="1000" 
+          data-aos-delay="100"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-3 tracking-wider uppercase" style={{ fontFamily: F_JOST }}>
             Get In Touch
           </h2>
+          {/* Decorative Line */}
+          <div className="flex items-center justify-start mt-2 mb-6">
+            <div className="w-16 h-[1px] bg-[#7d9b93]"></div>
+            <div className="w-2 h-2 rounded-full bg-[#7d9b93] mx-3"></div>
+            <div className="w-16 h-[1px] bg-[#7d9b93]"></div>
+          </div>
           <p className="text-[19px] text-white font-medium leading-relaxed max-w-md drop-shadow-lg" style={{ fontFamily: F_SANS, textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
             Let’s connect and bring your ideas to life. Reach out today for expert guidance, quick responses, and solutions tailored perfectly to your needs.
           </p>

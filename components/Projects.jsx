@@ -148,10 +148,16 @@ const Projects = ({ setIsOpen }) => {
         
         {/* Section Header */}
         <div data-aos="fade-up" data-aos-duration="1000">
-          <h2 className="heading">PROJECTS</h2>
-          <p className="subheading">
+          <h2 className="heading" style={{ marginBottom: '10px' }}>PROJECTS</h2>
+          {/* Decorative Line */}
+          <div className="flex items-center justify-center mt-2 mb-4">
+            <div className="w-16 h-[1px] bg-[#7d9b93]"></div>
+            <div className="w-2 h-2 rounded-full bg-[#7d9b93] mx-3"></div>
+            <div className="w-16 h-[1px] bg-[#7d9b93]"></div>
+          </div>
+          {/* <p className="subheading">
             Designed for Elevated Living <span className="text-[#d3be8a] mx-2 font-bold">•</span> Where nature meets modern comfort
-          </p>
+          </p> */}
         </div>
 
         {/* Project 1: Pragnya - Daffodils Tower */}
