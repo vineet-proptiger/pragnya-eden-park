@@ -71,7 +71,34 @@ export default function Home() {
           <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
         </svg>
         ENQUIRE NOW
-      </div>      {/* Mobile Sticky Bottom Bar */}
+      </div>      {/* Mobile Sticky Bottom Bar with Behavioral Micro-Animations */}
+      <style jsx global>{`
+        @keyframes phoneRingVibe {
+          0%, 60%, 100% { transform: rotate(0) scale(1); }
+          5%, 15%, 25%, 35%, 45%, 55% { transform: rotate(-18deg) scale(1.18); }
+          10%, 20%, 30%, 40%, 50% { transform: rotate(18deg) scale(1.18); }
+        }
+        .animate-phone-ring {
+          animation: phoneRingVibe 2.8s infinite ease-in-out;
+          display: inline-block;
+          transform-origin: center;
+        }
+        @keyframes whatsappGlow {
+          0% { box-shadow: 0 0 0 0 rgba(44, 211, 111, 0.7); transform: scale(1); }
+          40% { box-shadow: 0 0 0 9px rgba(44, 211, 111, 0); transform: scale(1.04); }
+          80%, 100% { box-shadow: 0 0 0 0 rgba(44, 211, 111, 0); transform: scale(1); }
+        }
+        .btn-whatsapp-glow {
+          animation: whatsappGlow 2.4s infinite ease-in-out;
+        }
+        @keyframes enquireFloat {
+          0%, 100% { transform: translateY(0) scale(1); }
+          50% { transform: translateY(-3px) scale(1.12); }
+        }
+        .animate-enquire-icon {
+          animation: enquireFloat 2.2s infinite ease-in-out;
+        }
+      `}</style>
       <div className="sticky-bottom-bar bg-[#0f172a] items-center justify-between px-3 py-[10px] gap-3 shadow-[0_-4px_20px_rgba(0,0,0,0.15)]">
         
         {/* BIG ENQUIRE BUTTON */}
@@ -86,7 +113,7 @@ export default function Home() {
             boxShadow: '0 4px 12px rgba(201, 169, 110, 0.2)'
           }}
         >
-          <svg className="w-[18px] h-[18px] sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-[18px] h-[18px] sm:w-5 sm:h-5 animate-enquire-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4 6a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2h-3.5l-2.5 3-2.5-3H6a2 2 0 01-2-2V6z" />
             <circle cx="8" cy="10.5" r="1" fill="currentColor" stroke="none" />
             <circle cx="12" cy="10.5" r="1" fill="currentColor" stroke="none" />
@@ -102,7 +129,7 @@ export default function Home() {
             className="flex flex-col items-center justify-center w-[51px] h-[51px] rounded-full text-white transition-all shadow-md shrink-0 gap-[2px]"
             style={{ background: '#1e293b', border: '1px solid rgba(255,255,255,0.1)' }}
           >
-            <svg className="w-[18px] h-[18px] animate-ring" fill="currentColor" viewBox="0 0 24 24">
+            <svg className="w-[18px] h-[18px] animate-phone-ring" fill="currentColor" viewBox="0 0 24 24">
               <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" />
             </svg>
             <span style={{ fontSize: '7.5px', fontWeight: '700', fontFamily: 'var(--font-sans)', whiteSpace: 'nowrap', textTransform: 'uppercase', letterSpacing: '0.02em', lineHeight: '1' }}>CALL US</span>
@@ -111,7 +138,7 @@ export default function Home() {
           <a
             href="https://wa.me/919718344024?text=Hi%2C%20I%20am%20interested%20in%20Pragnya%20Eden%20Park%20Siruseri%20Chennai"
             target="_blank" rel="noopener noreferrer"
-            className="flex flex-col items-center justify-center w-[51px] h-[51px] rounded-full text-white transition-all shadow-md shrink-0 gap-[2px]"
+            className="flex flex-col items-center justify-center w-[51px] h-[51px] rounded-full text-white transition-all shadow-md shrink-0 gap-[2px] btn-whatsapp-glow"
             style={{ background: '#2cd36f' }}
           >
             <svg className="w-[18px] h-[18px]" fill="currentColor" viewBox="0 0 24 24">

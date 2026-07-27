@@ -5,14 +5,28 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { galleryImages } from '../lib/images'
 
-const amenitiesList = galleryImages.map(item => ({
+// Tripled array buffer guarantees React-Slick never runs out of clones and loops forward infinitely without ever rewinding back
+const extendedGallery = [...galleryImages, ...galleryImages, ...galleryImages]
+const amenitiesList = extendedGallery.map(item => ({
   img: item.src,
   title: item.title
 }))
 
 const Amenities = () => {
   const headingRef = useRef(null)
+  const sliderRef = useRef(null)
   const [selectedAmenity, setSelectedAmenity] = useState(null)
+
+  useEffect(() => {
+    // Prevent React-Slick blank rendering on initial load across devices by triggering layout refresh
+    const t1 = setTimeout(() => {
+      if (sliderRef.current) sliderRef.current.slickGoTo(0, true);
+      window.dispatchEvent(new Event('resize'));
+    }, 100);
+    const t2 = setTimeout(() => window.dispatchEvent(new Event('resize')), 600);
+    const t3 = setTimeout(() => window.dispatchEvent(new Event('resize')), 1500);
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
+  }, []);
 
   useEffect(() => {
     let frameId = null
@@ -70,11 +84,14 @@ const Amenities = () => {
   }, [selectedAmenity])
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     autoplay: true,
-    autoplaySpeed: 5000,
-    speed: 800,
+    autoplaySpeed: 2500,
+    speed: 900,
+    cssEase: 'cubic-bezier(0.25, 1, 0.5, 1)',
+    pauseOnHover: true,
+    swipeToSlide: true,
     initialSlide: 0,
     slidesToScroll: 1,
     slidesToShow: 1,
@@ -191,6 +208,8 @@ const Amenities = () => {
           opacity: 0.82;
           width: 100%;
           aspect-ratio: 16/9;
+          min-height: 220px;
+          background-color: #e3d8cf;
         }
 
         .amenities-box:focus-visible {
@@ -413,7 +432,7 @@ const Amenities = () => {
       
       <div style={{ width: '100%', margin: '0 auto', overflow: 'hidden' }} data-aos="fade-up" data-aos-duration="1000">
         <div className="amenities-slider">
-          <Slider {...settings}>
+          <Slider ref={sliderRef} {...settings}>
             {amenitiesList.map((item, idx) => (
               <div key={idx}>
                 <div
@@ -429,7 +448,13 @@ const Amenities = () => {
                     }
                   }}
                 >
-                  <img src={item.img} alt={item.title} />
+                  <img 
+                    src={item.img} 
+                    alt={item.title} 
+                    onLoad={() => {
+                      if (idx < 5) window.dispatchEvent(new Event('resize'));
+                    }} 
+                  />
                   <div className="amenity_caption">{item.title}</div>
                 </div>
               </div>

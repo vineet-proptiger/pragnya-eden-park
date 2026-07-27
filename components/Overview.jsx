@@ -172,14 +172,14 @@ const Overview = ({ setIsOpen }) => {
         </div>
 
         {/* Right Side: Image */}
-        <div className="hidden lg:block w-full lg:w-5/12 mt-10 lg:mt-0" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="100">
+        <div className="w-full lg:w-5/12 mt-10 lg:mt-0" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="100">
           <div className="image_caption_wrap relative">
             <Image 
               src={overviewImage} 
               alt="Pragnya Eden Park Overview" 
               width={600}
               height={800}
-              className="w-full h-auto rounded-lg shadow-lg"
+              className="w-full h-auto rounded-lg shadow-lg max-w-[500px] lg:max-w-none mx-auto"
               style={{ objectFit: 'cover' }}
             />
           </div>

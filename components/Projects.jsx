@@ -51,12 +51,17 @@ const Projects = ({ setIsOpen }) => {
           overflow: hidden;
           background: #000242;
           min-height: 400px;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
         }
         .project-img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+          width: 100% !important;
+          height: 100% !important;
+          flex: 1 1 0%;
+          object-fit: cover !important;
           transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          display: block;
         }
         .project-card-wrap:hover .project-img {
           transform: scale(1.07);
@@ -131,7 +136,10 @@ const Projects = ({ setIsOpen }) => {
             font-size: 22px;
           }
           .project-img-container {
-            min-height: 280px;
+            min-height: auto;
+            aspect-ratio: 16 / 10;
+            width: 100%;
+            display: flex;
           }
         }
       `}</style>
