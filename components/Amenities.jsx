@@ -88,6 +88,7 @@ const Amenities = () => {
   const settings = {
     dots: false,
     infinite: true,
+    adaptiveHeight: true,
     autoplay: true,
     autoplaySpeed: 2500,
     speed: 900,
@@ -130,6 +131,16 @@ const Amenities = () => {
         settings: {
           centerPadding: '18px',
           autoplaySpeed: 2000,
+        }
+      }
+      ,
+      {
+        breakpoint: 420,
+        settings: {
+          centerMode: false,
+          centerPadding: '0px',
+          slidesToShow: 1,
+          slidesToScroll: 1,
         }
       }
     ]
@@ -189,34 +200,27 @@ const Amenities = () => {
         }
 
         .amenities-slider .slick-track {
-          display: flex !important;
-          align-items: stretch !important;
+          display: flex;
+          align-items: center;
         }
 
         .amenities-slider .slick-slide {
-          height: auto !important;
-          display: flex !important;
-          align-items: center;
-          justify-content: center;
-          padding: 0 10px;
           position: relative;
           z-index: 1;
         }
 
         .amenities-box {
           position: relative !important;
-          border-radius: 12px;
+          border-radius: 10px;
           overflow: hidden;
-          margin: 0 auto;
+          margin: 0;
           cursor: zoom-in;
-          transform: scale(0.85);
+          transform: scale(0.8);
           transform-origin: center;
           transition: transform 0.55s ease, opacity 0.55s ease;
-          opacity: 0.85;
+          opacity: 0.82;
           width: 100%;
-          min-height: 240px;
-          display: block !important;
-          background-color: #e3d8cf;
+          aspect-ratio: 16/9;
         }
 
         .amenities-box:focus-visible {
@@ -418,23 +422,31 @@ const Amenities = () => {
           .amenities-slider .slick-next:before {
             font-size: 25px;
           }
+        }
+
+        @media (max-width: 420px) {
+          .amenities-slider .slick-list {
+            min-height: 220px !important;
+          }
+
+          .amenities-slider .slick-slide > div {
+            width: 100% !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
 
           .amenities-box {
-            transform: scale(0.96) !important;
-            opacity: 1 !important;
-            min-height: 230px !important;
+            aspect-ratio: auto;
+            height: calc(56.25vw); /* 16:9 fallback height */
+            transform: scale(0.95);
+            max-width: 92%;
+            margin: 0 auto;
           }
 
-          .amenities-slider .slick-center .amenities-box,
-          .amenities-slider .slick-active .amenities-box {
-            transform: scale(1) !important;
-            opacity: 1 !important;
-          }
-
-          .amenity_caption {
-            right: 10px;
-            font-size: 14px;
-            padding: 6px 12px;
+          .amenities-box img {
+            height: 100%;
+            object-fit: cover;
           }
         }
       `}</style>
@@ -445,41 +457,36 @@ const Amenities = () => {
         </h2>
       </section>
       
-      <div style={{ width: '100%', margin: '0 auto', overflow: 'hidden', minHeight: '280px' }} data-aos="fade-up" data-aos-duration="1000">
-        <div className="amenities-slider w-full">
-          {!mounted ? (
-            <div className="w-[88%] max-w-[700px] h-[230px] sm:h-[350px] md:h-[450px] bg-[#e3d8cf] rounded-2xl animate-pulse mx-auto shadow-sm my-6" />
-          ) : (
-            <Slider ref={sliderRef} {...settings}>
-              {amenitiesList.map((item, idx) => (
-                <div key={idx} className="w-full">
-                  <div
-                    className="amenities-box"
-                    role="button"
-                    tabIndex={0}
-                    aria-label={`Open ${item.title} image`}
-                    onClick={() => setSelectedAmenity(item)}
-                    onKeyDown={(event) => {
-                      if (event.key === 'Enter' || event.key === ' ') {
-                        event.preventDefault()
-                        setSelectedAmenity(item)
-                      }
-                    }}
-                  >
-                    <img 
-                      src={item.img} 
-                      alt={item.title}
-                      className="w-full h-full object-cover" 
-                      onLoad={() => {
-                        if (idx < 6) window.dispatchEvent(new Event('resize'));
-                      }} 
-                    />
-                    <div className="amenity_caption">{item.title}</div>
-                  </div>
+      <div style={{ width: '100%', margin: '0 auto', overflow: 'hidden' }} data-aos="fade-up" data-aos-duration="1000">
+        <div className="amenities-slider">
+          <Slider ref={sliderRef} {...settings}>
+            {amenitiesList.map((item, idx) => (
+              <div key={idx}>
+                <div
+                  className="amenities-box"
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Open ${item.title} image`}
+                  onClick={() => setSelectedAmenity(item)}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                      event.preventDefault()
+                      setSelectedAmenity(item)
+                    }
+                  }}
+                >
+                  <img 
+                    src={item.img} 
+                    alt={item.title} 
+                    onLoad={() => {
+                      if (idx < 5) window.dispatchEvent(new Event('resize'));
+                    }} 
+                  />
+                  <div className="amenity_caption">{item.title}</div>
                 </div>
-              ))}
-            </Slider>
-          )}
+              </div>
+            ))}
+          </Slider>
         </div>
       </div>
 
