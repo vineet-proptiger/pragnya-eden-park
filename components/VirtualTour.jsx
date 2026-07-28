@@ -85,13 +85,10 @@ const VirtualTour = ({ setIsOpen }) => {
         </div>
 
         {/* Text */}
-        <h2 style={{
-          fontFamily: F_JOST,
-          fontWeight: '500',
-          letterSpacing: '0.18em',
-          textTransform: 'uppercase',
-          margin: 0
-        }} className="text-[16px] md:text-[20px] drop-shadow-md">
+        <h2
+          className="text-[22px] sm:text-[28px] md:text-[36px] font-semibold leading-tight uppercase tracking-wider text-white drop-shadow-md"
+          style={{ fontFamily: "var(--font-jost), Montserrat, sans-serif", margin: 0 }}
+        >
           STEP INTO YOUR FUTURE HOME
         </h2>
       </div>

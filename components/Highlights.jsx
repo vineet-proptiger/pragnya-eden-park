@@ -103,7 +103,7 @@ const Highlights = () => {
       <div className="parallax"></div>
 
       <div className="container-fluid max-w-[1300px] mx-auto relative z-10 py-[70px]">
-        <h2 className="heading text-center" data-aos="fade-up" data-aos-duration="1000" style={{ marginBottom: '10px' }}>
+        <h2 className="text-[22px] sm:text-[28px] md:text-[36px] font-semibold leading-tight uppercase tracking-wider text-[#d3be8a] text-center" data-aos="fade-up" data-aos-duration="1000" style={{ fontFamily: "var(--font-jost), Montserrat, sans-serif", marginBottom: '10px' }}>
           PROJECT HIGHLIGHTS & USPS
         </h2>
         {/* Decorative Line */}

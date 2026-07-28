@@ -20,11 +20,10 @@ export default function QuickChat() {
           }}>
             QUICK CONNECT
           </span>
-          <h2 style={{
-            fontFamily: F_JOST, fontWeight: '700', fontSize: '18px',
-            color: '#684C1B', letterSpacing: '0.1em', textTransform: 'uppercase', margin: 0,
-            display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap'
-          }}>
+          <h2
+            className="text-[22px] sm:text-[28px] md:text-[36px] font-semibold leading-tight uppercase tracking-wider text-gray-900 text-center flex items-center justify-center flex-wrap"
+            style={{ fontFamily: "var(--font-jost), Montserrat, sans-serif", margin: 0 }}
+          >
             Reply in one tap — get it on WhatsApp
           </h2>
         </div>

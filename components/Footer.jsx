@@ -11,8 +11,12 @@ const Footer = () => (
     {/* Removed blue overlay as requested */}
 
     <div className="relative z-10">
-      <div style={{ maxWidth: '860px', margin: '0 auto', padding: '56px 24px 32px', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '24px', fontWeight: '800', fontFamily: F_JOST, marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.05em' }} data-aos="fade-in">
+      <div className="max-w-[860px] mx-auto px-2 sm:px-6 pt-14 pb-8 text-center">
+        <h2 
+          className="text-[21px] sm:text-[28px] md:text-[36px] font-semibold leading-tight uppercase tracking-wide mb-2 text-white whitespace-nowrap sm:whitespace-normal" 
+          style={{ fontFamily: F_JOST }} 
+          data-aos="fade-in"
+        >
           About The Developer
         </h2>
         <p style={{ fontSize: '13px', color: 'var(--color-gold)', fontFamily: F_JOST, fontWeight: '700', letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '12px' }}>
@@ -38,9 +42,7 @@ const Footer = () => (
           &copy; 2026 Pragnya Eden Park. All rights reserved.
         </p>
         <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
-          <a href="https://pragnyaedenpark.co.in" target="_blank" rel="noopener noreferrer" style={{ fontSize: '13px', color: '#ccc', fontFamily: F_SANS, textDecoration: 'none', transition: 'color 0.3s' }}>
-            www.pragnyaedenpark.co.in
-          </a>
+          
           <span style={{ color: '#444' }}>|</span>
           <Link href="/privacy-policy" style={{ fontSize: '13px', color: 'var(--color-gold)', fontFamily: F_SANS }}>
             Privacy Policy

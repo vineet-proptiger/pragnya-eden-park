@@ -39,9 +39,12 @@ const MasterPlan = ({ setIsOpen }) => {
     <section id="masterplan" className="relative py-20 bg-[#f4ebe4] overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <div className="mb-12 text-center" data-aos="fade-up" data-aos-duration="1000">
-          <h3 className="text-[#000242] text-[31px] lg:text-[42px] font-medium uppercase tracking-wide mb-4 font-montserrat leading-[40px] md:leading-[56px]">
+          <h2
+            className="text-[22px] sm:text-[28px] md:text-[36px] font-semibold leading-tight uppercase tracking-wider text-gray-900 mb-4"
+            style={{ fontFamily: "var(--font-jost), Montserrat, sans-serif" }}
+          >
             Site & Floor Plans
-          </h3>
+          </h2>
           {/* Decorative Line */}
           <div className="flex items-center justify-center mt-2 mb-8">
             <div className="w-16 h-[1px] bg-[#7d9b93]"></div>

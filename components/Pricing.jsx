@@ -71,7 +71,7 @@ const Pricing = ({ setIsOpen }) => {
         {/* Section Header */}
         <div className="relative text-center mb-16 md:mb-20" data-aos="fade-up" data-aos-duration="1000"> 
           <h2
-            className="text-[28px] md:text-[36px] font-semibold leading-tight uppercase tracking-wider text-gray-900"
+            className="text-[22px] sm:text-[28px] md:text-[36px] font-semibold leading-tight uppercase tracking-wider text-gray-900"
             style={{ fontFamily: "var(--font-jost), Montserrat, sans-serif" }}
           >
             Configurations & Pricing

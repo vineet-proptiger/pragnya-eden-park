@@ -44,11 +44,11 @@ const PaymentPlan = ({ setIsOpen }) => (
           fontFamily: F_JOST, letterSpacing: '0.1em', textTransform: 'uppercase',
           border: '1px solid var(--color-gold-light)', marginBottom: '10px',
         }}>Payment Plan</span>
-        <h2 style={{
-          fontFamily: F_JOST, fontWeight: '400', fontSize: '26px',
-          color: '#111827', margin: '0 0 6px',
-        }}>
-          Easy <strong style={{ fontWeight: '800' }}>Flexi</strong> Payment Plan
+        <h2
+          className="text-[22px] sm:text-[28px] md:text-[36px] font-semibold leading-tight uppercase tracking-wider text-gray-900"
+          style={{ fontFamily: "var(--font-jost), Montserrat, sans-serif", margin: '0 0 6px' }}
+        >
+          Easy <strong className="font-extrabold">Flexi</strong> Payment Plan
         </h2>
         <div style={{ width: '60px', height: '3px', background: 'linear-gradient(90deg, var(--color-gold), var(--color-gold-light))', borderRadius: '2px', margin: '8px auto 0' }} />
       </div>

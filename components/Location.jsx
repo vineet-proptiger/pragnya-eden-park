@@ -109,8 +109,8 @@ const Location = () => {
         {/* Section Header */}
         <div style={{ marginBottom: '50px', textAlign: 'center' }} data-aos="fade-down" data-aos-duration="1000">
            <h2
-             className="text-[31px] md:text-[46px] font-medium leading-[40px] md:leading-[56px] uppercase tracking-[.02em] text-[#d3be8a]"
-             style={{ fontFamily: F_JOST, marginBottom: '12px' }}
+             className="text-[22px] sm:text-[28px] md:text-[36px] font-semibold leading-tight uppercase tracking-wider text-[#d3be8a]"
+             style={{ fontFamily: "var(--font-jost), Montserrat, sans-serif", marginBottom: '12px' }}
            >
              LOCATION ADVANTAGES
            </h2>

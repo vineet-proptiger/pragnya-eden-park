@@ -56,11 +56,12 @@ const Gallery = ({ setIsOpen }) => {
         {/* ── Header Row ── */}
         <div className="flex flex-col items-center justify-center mb-10" data-aos="fade-down" data-aos-duration="1000">
           <div className="flex items-center justify-center">
-            <ArcIcon />
-            <h2 style={{
-              fontFamily: F_JOST, fontWeight: '700', fontSize: '18px',
-              color: '#684C1B', letterSpacing: '0.1em', textTransform: 'uppercase', margin: 0,
-            }} className="text-center">PRAGNYA EDEN PARK GALLERY</h2>
+            <h2
+              className="text-[22px] sm:text-[28px] md:text-[36px] font-semibold leading-tight uppercase tracking-wider text-gray-900 text-center"
+              style={{ fontFamily: "var(--font-jost), Montserrat, sans-serif", margin: 0 }}
+            >
+              PRAGNYA EDEN PARK GALLERY
+            </h2>
           </div>
         </div>
 

@@ -67,7 +67,7 @@ const ContactCTA = () => {
           
           {/* Left Content */}
           <div className="text-white" data-aos="fade-right" data-aos-duration="1000">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-wider uppercase" style={{ fontFamily: F_JOST }}>
+            <h2 className="text-[22px] sm:text-[28px] md:text-[36px] font-semibold leading-tight uppercase tracking-wider text-white mb-6" style={{ fontFamily: "var(--font-jost), Montserrat, sans-serif" }}>
               Get In Touch
             </h2>
             <p className="text-lg text-gray-200 leading-relaxed max-w-md" style={{ fontFamily: F_SANS }}>

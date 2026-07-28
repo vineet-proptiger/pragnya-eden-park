@@ -130,8 +130,8 @@ const AboutDeveloper = ({ setIsOpen }) => (
       {/* Heading */}
       {/* <div className="text-center mb-12 md:mb-[50px]" data-aos="fade-down" data-aos-duration="1000">
         <h2
-          className="text-[31px] md:text-[46px] font-medium leading-[40px] md:leading-[56px] uppercase tracking-[.02em] text-[#d3be8a] drop-shadow-md"
-          style={{ fontFamily: F_JOST }}
+          className="text-[22px] sm:text-[28px] md:text-[36px] font-semibold leading-tight uppercase tracking-wider text-[#d3be8a] drop-shadow-md"
+          style={{ fontFamily: "var(--font-jost), Montserrat, sans-serif" }}
         >
           About the Developer
         </h2>
@@ -147,7 +147,7 @@ const AboutDeveloper = ({ setIsOpen }) => (
           data-aos-duration="1000" 
           data-aos-delay="100"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-3 tracking-wider uppercase" style={{ fontFamily: F_JOST }}>
+          <h2 className="text-[22px] sm:text-[28px] md:text-[36px] font-semibold leading-tight uppercase tracking-wider text-white mb-3" style={{ fontFamily: "var(--font-jost), Montserrat, sans-serif" }}>
             Get In Touch
           </h2>
           {/* Decorative Line */}
