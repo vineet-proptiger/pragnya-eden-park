@@ -39,13 +39,13 @@ export default function Home() {
       {/* <Amenities setIsOpen={setIsOpen} /> */}
       <CarouselSection 
         setIsOpen={setIsOpen} 
-        title="Gallery Where Every View Tells a Story" 
+        title="Where Every View Tells a Story" 
         id="gallery" 
         images={galleryImages} 
       />
       <CarouselSection 
         setIsOpen={setIsOpen} 
-        title="Amenities Indulge in a Lifestyle Beyond Ordinary" 
+        title="Indulge in a Lifestyle Beyond Ordinary" 
         id="amenities" 
         images={amenityImages} 
       />
